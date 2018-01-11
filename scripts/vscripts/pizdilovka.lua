@@ -1,6 +1,6 @@
 
 require("playertables")
---неуязв от врагов 2 сек, границы, когда мертв до дуэли не появл на дуэль, переделать TP_MAX_PLAYERS под уровень, окончание
+--неуязв от врагов 2 сек, границы, когда мертв до дуэли не появл на дуэль, 5 мин между, переделать TP_MAX_PLAYERS под уровень
 DUEL_STATUS = 0
 
 if DirePlayers == nil then
@@ -40,11 +40,9 @@ function Teleport_Max_Players()
 	local tempplayer = math.random(1,math.max(MaxDirePlayers,MaxRadiantPlayers))
 	local teleported = {}
 	if MaxDirePlayers == 0 then
-		Teleport(RadiantPlayers[MaxRadiantPlayers],RadiantPlayers[MaxRadiantPlayers].team, arenanom)
-		RadiantPlayers[MaxRadiantPlayers]:SetRespawnDisabled()
+		return
 	elseif MaxRadiantPlayers == 0 then
-		Teleport(DirePlayers[MaxDirePlayers + 1],DirePlayers[MaxDirePlayers + 1].team, arenanom)
-		DirePlayers[MaxDirePlayers]:SetRespawnDisabled()
+		return
 	elseif MaxDirePlayers == MaxRadiantPlayers then
 		for i = 0, MaxDirePlayers 
 		do
@@ -60,24 +58,14 @@ function Teleport_Max_Players()
 		do
 			Teleport(DirePlayers[i], DirePlayers[i].team, aremanom)
 			DirePlayers[i]:SetRespawnDisabled()
-			while (RadiantPlayers[tempplayer].onduel) do
-				tempplayer = random(1,MaxRadiantPlayers)
-			end
-			tped[tempplayer] = 1
-			Teleport(RadiantPlayers[tempplayer],RadiantPlayers[tempplayer].team,arenanom)
-			RadiantPlayers[tempplayer]:SetRespawnDisabled()
+			
 		end
 	elseif math.max() == MaxRadiantPlayers then
 		for i = 0, MaxRadiantPlayers 
 		do
 			Teleport(RadiantPlayers[i], RadiantPlayers[i].team, aremanom)
 			RadiantPlayers[i]:SetRespawnDisabled()
-			while (tped[tempplayer]) do
-				tempplayer = random(1,MaxDirePlayers)
-			end
-			tped[tempplayer] = 1
-			Teleport(DirePlayers[tempplayer],DirePlayers[tempplayer].team,arenanom)
-			DirePlayers[tempplayer]:SetRespawnDisabled()
+			Tp_Max_Lvl_Player("dire")
 		end
 	end
 end
@@ -86,6 +74,17 @@ end
 function Teleport(hero, team, Arena_Nom)
        	FindClearSpaceForUnit(hero, Entities:FindByName(nil,"arena_tp_" .. team.."_" .. tostring(Arena_Nom)):GetAbsOrigin(), true)
       	SendToConsole("dota_camera_center")
+end
+
+function Tp_Max_Lvl_Player(team)
+	local maxlvl = 0
+	for PlayerId = 0,4
+    do
+    	if team == "dire" then
+			if maxlvl < DirePlayers[PlayerId]
+ 		elseif team == "radiant" then
+ 			if maxlvl < RadiantPlayers[PlayerId]
+ 	end
 end
 
 function Create_Player_Hero_Table_Safe_Information_Refresh_All()
@@ -99,11 +98,13 @@ function Create_Player_Hero_Table_Safe_Information_Refresh_All()
    					DirePlayers[MaxDirePlayers + 1] = player:GetAssignedHero()
    					DirePlayers[MaxDirePlayers + 1].team = "dire"
    					DirePlayers[MaxDirePlayers + 1].onduel = false
+   					DirePlayers[MaxDirePlayers + 1].level = GetLevel(PlayerId)
    					MaxDirePlayers = MaxDirePlayers + 1
    				elseif player:GetTeam() == DOTA_TEAM_GOODGUYS then
    					RadiantPlayers[MaxRadiantPlayers + 1] = player:GetAssignedHero()
    					RadiantPlayers[MaxRadiantPlayers + 1].team = "radiant"
    					RadiantPlayers[MaxRadiantPlayers + 1].onduel = false
+   					RadiantPlayers[MaxRadiantPlayers + 1].level = GetLevel(PlayerId)
    					MaxRadiantPlayers = MaxRadiantPlayers + 1 
    				end
    			end
@@ -114,7 +115,6 @@ end
 function Safe_Information_Refresh_All(player)
 	player.InfBeforeDuel = 
 	{
-		MaxAbilityAmount = player:GetAbilityCount(),
 		AbilitiesCooldowns = {},
 		ItemCooldowns = {},
 		Health = player:GetHealth(),
@@ -148,13 +148,7 @@ function Duel_Time()
 	  	})
 	end
 	Duel_End()
-	Timers:CreateTimer({
-    endTime = 60,
-    callback = function()
-    	Pizdilovka()
-    end
-  	})
-
+	Duels()
 end
 
 function Check_For_Dead_Heroes()
@@ -198,6 +192,17 @@ function Refresh_State()
 		DirePlayers[i]:SetHealth(DirePlayers[i].InfBeforeDuel.Health)
 		DirePlayers[i]:SetMana(DirePlayers[i].InfBeforeDuel.Mana)
 		FindClearSpaceForUnit(DirePlayers[i], DirePlayers[i].InfBeforeDuel.Place, true)
-
+		for j = 0, 23
+		do
+			if DirePlayers[i]:GetAbilityByIndex(j) ~= nil then
+				DirePlayers[i]:GetAbilityByIndex(j):StartCooldown(DirePlayers:GetAbilityByIndex(j):GetCooldownTime() - DirePlayers[i].InfBeforeDuel.AbilitiesCooldowns[j])
+			end
+		end
+			for i = 0, 5
+		do
+		if  DirePlayers[i]:GetItemInSlot(i) then
+			DirePlayers[i]:GetItemInSlot(j):StartCooldown(DirePlayers:GetItemInSlot(j):GetCooldownTime() - DirePlayers[i].InfBeforeDuel.ItemCooldowns[j])
+		end
+	end
 	end
 end
