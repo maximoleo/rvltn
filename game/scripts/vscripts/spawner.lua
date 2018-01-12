@@ -1,7 +1,6 @@
 print("kek")
 require("timers")
 
-
 names =  {}
 names[1] = {"spawn_creep_medium_small","medium_creep_small", 3}
 names[2] = {"spawn_creep_medium_large","medium_creep_large", 1}
