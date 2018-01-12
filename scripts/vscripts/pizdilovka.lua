@@ -1,6 +1,6 @@
 
 require("playertables")
---неуязв от врагов 2 сек, границы, когда мертв до дуэли не появл на дуэль, 5 мин между, переделать TP_MAX_PLAYERS под уровень
+--неуязв от врагов 2 сек, границы,
 DUEL_STATUS = 0
 
 if DirePlayers == nil then
@@ -19,7 +19,7 @@ MaxRadiantPlayers = 0
 
 function Duels() 	
  	Timers:CreateTimer({
-    local endTime = 300,
+    endTime = 300,
     callback = function()
     	DUEL_STATUS = 1
     	Pizdilovka()
@@ -29,10 +29,13 @@ end
 
 function Pizdilovka()
 	Create_Player_Hero_Table_Safe_Information_Refresh_All()
-	Teleport_Max_Players()
-	DUEL_STATUS = 2
-	Duel_Time()
-	
+	if Teleport_Max_Players() == 0 then
+		DUEL_STATUS = 0
+		Duels()
+	else
+		DUEL_STATUS = 2
+		Duel_Time()
+	end
 end
 
 function Teleport_Max_Players()
@@ -40,9 +43,9 @@ function Teleport_Max_Players()
 	local tempplayer = math.random(1,math.max(MaxDirePlayers,MaxRadiantPlayers))
 	local teleported = {}
 	if MaxDirePlayers == 0 then
-		return
+		return 0
 	elseif MaxRadiantPlayers == 0 then
-		return
+		return 0
 	elseif MaxDirePlayers == MaxRadiantPlayers then
 		for i = 0, MaxDirePlayers 
 		do
@@ -69,6 +72,7 @@ function Teleport_Max_Players()
 			Tp_Max_Lvl_Player("dire", arenanom)
 		end
 	end
+	return 1
 end
 
 
@@ -86,14 +90,14 @@ function Tp_Max_Lvl_Player(team, aremanom)
 	for PlayerId = 0,4
     do
     	if team == "dire" then
-    		if DirePlayers[PlayerId] ~= nil
+    		if DirePlayers[PlayerId] ~= nil then
 				if DirePlayers[maxlvl].level < DirePlayers[PlayerId].level then
 					maxlvl = PlayerId
 				end
 			end
  		elseif team == "radiant" then
  			if RadiantPlayers[PlayerId] ~= nil then
- 				if RadiantPlayes[maxlvl].level < RadiantPlayers[PlayerId]
+ 				if RadiantPlayes[maxlvl].level < RadiantPlayers[PlayerId] then
  					maxlvl = PlayerId
  				end
  			end
@@ -104,7 +108,7 @@ function Tp_Max_Lvl_Player(team, aremanom)
 		DirePlayers[maxlvl]:SetRespawnDisabled()
 		DirePlayers[maxlvl].level = 0
 
-	elseif temp == "rediant" 
+	elseif temp == "rediant" then
  		Teleport(RadiantPlayers[maxlvl], team, aremanom)
  		DirePlayers[maxlvl]:SetRespawnDisabled()
  		RadiantPlayers[maxlvl].level = 0
@@ -122,13 +126,13 @@ function Create_Player_Hero_Table_Safe_Information_Refresh_All()
    					DirePlayers[MaxDirePlayers + 1] = player:GetAssignedHero()
    					DirePlayers[MaxDirePlayers + 1].team = "dire"
    					DirePlayers[MaxDirePlayers + 1].onduel = false
-   					DirePlayers[MaxDirePlayers + 1].level = GetLevel(PlayerId)
+   					DirePlayers[MaxDirePlayers + 1].level = DirePlayers[MaxDirePlayers + 1]:GetLevel(	)
    					MaxDirePlayers = MaxDirePlayers + 1
    				elseif player:GetTeam() == DOTA_TEAM_GOODGUYS then
    					RadiantPlayers[MaxRadiantPlayers + 1] = player:GetAssignedHero()
    					RadiantPlayers[MaxRadiantPlayers + 1].team = "radiant"
    					RadiantPlayers[MaxRadiantPlayers + 1].onduel = false
-   					RadiantPlayers[MaxRadiantPlayers + 1].level = GetLevel(PlayerId)
+   					RadiantPlayers[MaxRadiantPlayers + 1].level = RadiantPlayers[MaxRadiantPlayers + 1]:GetLevel(	)
    					MaxRadiantPlayers = MaxRadiantPlayers + 1 
    				end
    			end
@@ -165,7 +169,7 @@ end
 function Duel_Time()
 	while (DUEL_STATUS == 2) do
 		Timers:CreateTimer({
-	    local endTime = 1,
+	    endTime = 1,
 	    callback = function()
 	    	Check_For_Dead_Heroes()
 	    end
