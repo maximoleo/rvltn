@@ -19,7 +19,7 @@ MaxRadiantPlayers = 0
 
 function Duels() 	
  	Timers:CreateTimer({
-    local endTime = 60,
+    local endTime = 300,
     callback = function()
     	DUEL_STATUS = 1
     	Pizdilovka()
@@ -58,32 +58,56 @@ function Teleport_Max_Players()
 		do
 			Teleport(DirePlayers[i], DirePlayers[i].team, aremanom)
 			DirePlayers[i]:SetRespawnDisabled()
-			
+			Tp_Max_Lvl_Player("radiant", arenanom)
+
 		end
 	elseif math.max() == MaxRadiantPlayers then
 		for i = 0, MaxRadiantPlayers 
 		do
 			Teleport(RadiantPlayers[i], RadiantPlayers[i].team, aremanom)
 			RadiantPlayers[i]:SetRespawnDisabled()
-			Tp_Max_Lvl_Player("dire")
+			Tp_Max_Lvl_Player("dire", arenanom)
 		end
 	end
 end
 
 
 function Teleport(hero, team, Arena_Nom)
+    if hero.IsAlife() then
        	FindClearSpaceForUnit(hero, Entities:FindByName(nil,"arena_tp_" .. team.."_" .. tostring(Arena_Nom)):GetAbsOrigin(), true)
       	SendToConsole("dota_camera_center")
+     elseif hero.IsAlife() == false then
+     	hero.SetRespawnDisabled()
+    end
 end
 
-function Tp_Max_Lvl_Player(team)
+function Tp_Max_Lvl_Player(team, aremanom)
 	local maxlvl = 0
 	for PlayerId = 0,4
     do
     	if team == "dire" then
-			if maxlvl < DirePlayers[PlayerId]
+    		if DirePlayers[PlayerId] ~= nil
+				if DirePlayers[maxlvl].level < DirePlayers[PlayerId].level then
+					maxlvl = PlayerId
+				end
+			end
  		elseif team == "radiant" then
- 			if maxlvl < RadiantPlayers[PlayerId]
+ 			if RadiantPlayers[PlayerId] ~= nil then
+ 				if RadiantPlayes[maxlvl].level < RadiantPlayers[PlayerId]
+ 					maxlvl = PlayerId
+ 				end
+ 			end
+ 		end
+ 	end
+ 	if team == "dire" then
+ 		Teleport(DirePlayers[maxlvl], team, aremanom)
+		DirePlayers[maxlvl]:SetRespawnDisabled()
+		DirePlayers[maxlvl].level = 0
+
+	elseif temp == "rediant" 
+ 		Teleport(RadiantPlayers[maxlvl], team, aremanom)
+ 		DirePlayers[maxlvl]:SetRespawnDisabled()
+ 		RadiantPlayers[maxlvl].level = 0
  	end
 end
 
@@ -189,20 +213,41 @@ end
 function Refresh_State()
 	for i = 0,MaxDirePlayers
 	do
-		DirePlayers[i]:SetHealth(DirePlayers[i].InfBeforeDuel.Health)
-		DirePlayers[i]:SetMana(DirePlayers[i].InfBeforeDuel.Mana)
-		FindClearSpaceForUnit(DirePlayers[i], DirePlayers[i].InfBeforeDuel.Place, true)
-		for j = 0, 23
-		do
-			if DirePlayers[i]:GetAbilityByIndex(j) ~= nil then
-				DirePlayers[i]:GetAbilityByIndex(j):StartCooldown(DirePlayers:GetAbilityByIndex(j):GetCooldownTime() - DirePlayers[i].InfBeforeDuel.AbilitiesCooldowns[j])
+		if DirePlayers[i] then
+			DirePlayers[i]:SetHealth(DirePlayers[i].InfBeforeDuel.Health)
+			DirePlayers[i]:SetMana(DirePlayers[i].InfBeforeDuel.Mana)
+			FindClearSpaceForUnit(DirePlayers[i], DirePlayers[i].InfBeforeDuel.Place, true)
+			for j = 0, 23
+			do
+				if DirePlayers[i]:GetAbilityByIndex(j) ~= nil then
+					DirePlayers[i]:GetAbilityByIndex(j):StartCooldown(DirePlayers:GetAbilityByIndex(j):GetCooldownTime() - DirePlayers[i].InfBeforeDuel.AbilitiesCooldowns[j])
+				end
+			end
+			for i = 0, 5
+			do
+				if  DirePlayers[i]:GetItemInSlot(i) then
+					DirePlayers[i]:GetItemInSlot(j):StartCooldown(DirePlayers:GetItemInSlot(j):GetCooldownTime() - DirePlayers[i].InfBeforeDuel.ItemCooldowns[j])
+				end
+
 			end
 		end
+		if RadiantPlayers[i] then
+			RadiantPlayers[i]:SetHealth(RadiantPlayers[i].InfBeforeDuel.Health)
+			RadiantPlayers[i]:SetMana(RadiantPlayers[i].InfBeforeDuel.Mana)
+			FindClearSpaceForUnit(RadiantPlayers[i], RadiantPlayers[i].InfBeforeDuel.Place, true)
+			for j = 0, 23
+			do
+				if RadiantPlayers[i]:GetAbilityByIndex(j) ~= nil then
+					RadiantPlayers[i]:GetAbilityByIndex(j):StartCooldown(RadiantPlayers:GetAbilityByIndex(j):GetCooldownTime() - RadiantPlayers[i].InfBeforeDuel.AbilitiesCooldowns[j])
+				end
+			end
 			for i = 0, 5
-		do
-		if  DirePlayers[i]:GetItemInSlot(i) then
-			DirePlayers[i]:GetItemInSlot(j):StartCooldown(DirePlayers:GetItemInSlot(j):GetCooldownTime() - DirePlayers[i].InfBeforeDuel.ItemCooldowns[j])
+			do
+				if  RadiantPlayers[i]:GetItemInSlot(i) then
+					RadiantPlayers[i]:GetItemInSlot(j):StartCooldown(RadiantPlayers:GetItemInSlot(j):GetCooldownTime() - RadiantPlayers[i].InfBeforeDuel.ItemCooldowns[j])
+				end
+			end
 		end
-	end
+
 	end
 end
