@@ -3,9 +3,9 @@ require("timers")
 
 
 names =  {}
-names[1] = {"spawn_creep_medium_small","medium_creep_small"}
-names[2] = {"spawn_creep_medium_large","medium_creep_large"}
-names[3] = {"spawn_creep_dragon","dragon_creep_meele_large"}
+names[1] = {"spawn_creep_medium_small","medium_creep_small", 3}
+names[2] = {"spawn_creep_medium_large","medium_creep_large", 1}
+names[3] = {"spawn_creep_dragon","dragon_creep_meele_large", 1}
 
 PlaceOfSpawn = {}
 
@@ -38,7 +38,12 @@ function Spawn()
 		do
 			if (PlaceOfSpawn[j]:GetName() == names[i][1])
 			then
-				creep = CreateUnitByName(names[i][2], PlaceOfSpawn[j]:GetAbsOrigin() , true, nil, nil, DOTA_TEAM_NEUTRALS)
+				temp = names[i][3]
+				while temp > 0 
+				do
+					creep = CreateUnitByName(names[i][2], PlaceOfSpawn[j]:GetAbsOrigin() , true, nil, nil, DOTA_TEAM_NEUTRALS)
+					temp = temp - 1
+				end
 			end
 			i = i + 1
 		end
