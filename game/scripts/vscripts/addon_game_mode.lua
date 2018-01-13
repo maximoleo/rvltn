@@ -15,7 +15,7 @@
 --ГЕРОИ И ПРЕДМЕТЫ
 
 
-require('spawner')
+require('spawners/spawner')
 require('gamemode')
 players = {}
 
