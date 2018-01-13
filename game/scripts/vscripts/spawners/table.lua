@@ -1,3 +1,11 @@
+MAX_CREEPS_PER_SPAWN = 30
+
+names =  {}
+names[1] = {"spawner_creep_easy" , {{"easy_creep_small","easy_creep_large"}}, CreepTypes = 1, MaxToSpawn = {3, 1}, Creeps = {nil}, AvaliableToSpawn = {}}
+names[2] = {"spawner_creep_medium",{{"medium_creep_small","medium_creep_large"}}, CreepTypes = 1, MaxToSpawn =  {3, 1}, Creeps = {nil}, AvaliableToSpawn = {}}
+names[3] = {"spawner_creep_dragon",{{"dragon_creep_meele_small","dragon_creep_meele_large"}}, CreepTypes = 1, MaxToSpawn =  {3, 1}, Creeeps = {nil}, AvaliablePlases = {}}
+
+
 CreepLevel = {
 {},
 {

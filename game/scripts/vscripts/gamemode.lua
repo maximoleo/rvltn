@@ -1,6 +1,6 @@
 require("pizdilovka")
-require("spawner")
-
+require("spawners/spawner")
+require("libraries/timers")
 
 if GameMode == nil then
 	GameMode = class({})
