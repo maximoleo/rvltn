@@ -1,5 +1,5 @@
 
---неуязв от врагов 2 сек, границы,
+--неуязв от врагов 2 сек,
 DUEL_STATUS = 0
 
 if DirePlayers == nil then
@@ -9,10 +9,7 @@ end
 if RadiantPlayers == nil then
 	RadiantPlayers = {}
 end
-
-if PlayersInf == nil then
-	PlayersInf = {}
-end
+arenanom = 0
 MaxDirePlayers = 0
 MaxRadiantPlayers = 0
 AssigneableDirePlayers = 0
@@ -30,21 +27,21 @@ end
 
 function Pizdilovka()
 	Create_Player_Hero_Table_Safe_Information_Refresh_All()
+	arenanom = math.random(1,4)
 	if Teleport_Max_Players() == 0 then
-		MaxRadiantPlayers = 0
-		MaxDirePlayers = 0
-		DUEL_STATUS = 0
-		AssigneableRadiantPlayers = 0
-		AssigneableDirePlayers = 0
-		Duels()
+		Duel_End(0)
 	else
-		print("duel time")
 		DUEL_STATUS = 2
+		Timers:CreateTimer('Duel_End', {
+    		endTime = 60,
+    		callback = function()
+      		Duel_End(2)
+    	end
+  		})
 	end
 end
 
 function Teleport_Max_Players()
-	local arenanom = math.random(1,4)
 	local tempplayer = math.random(1,math.max(AssigneableDirePlayers, AssigneableRadiantPlayers))
 	local teleported = {}
 	if AssigneableDirePlayers == 0 then
@@ -54,7 +51,6 @@ function Teleport_Max_Players()
 	elseif AssigneableDirePlayers == AssigneableRadiantPlayers then
 		for i = 1, AssigneableDirePlayers
 		do
-			print("Player: ", DirePlayers[i], "team", "arenanom", arenanom)
 			Teleport(DirePlayers[i], DirePlayers[i].team, arenanom)
 			Teleport(RadiantPlayers[i],RadiantPlayers[i].team, arenanom)
 			RadiantPlayers[i].onduel = true
@@ -70,28 +66,35 @@ function Teleport_Max_Players()
 			Tp_Max_Lvl_Player("radiant", arenanom)
 
 		end
+		for i = AssigneableDirePlayers, AssigneableRadiantPlayers 
+		do
+			--disable RaidantPlayers[i]
+		end
 	elseif math.max(AssigneableDirePlayers, AssigneableRadiantPlayers) == AssigneableRadiantPlayers then
 		for i = 1, AssigneableRadiantPlayers
 		do
 			Tp_Max_Lvl_Player("radiant", arenanom)
 			Tp_Max_Lvl_Player("dire", arenanom)
 		end
+		for i = AssigneableDirePlayers, AssigneableRadiantPlayers 
+		do
+			--disable DirePlayers[i]
+		end
 	end
 	return 1
 end
 
 
-function Teleport(hero, team, arenanom)
+function Teleport(hero, team)
     if hero:IsAlive() then
        	FindClearSpaceForUnit(hero, Entities:FindByName(nil,"arena_tp_" .. team.."_" .. tostring(arenanom)):GetAbsOrigin(), true)
       	SendToConsole("dota_camera_center")
-      	print("Teleported")
      elseif hero:IsAlive() == false then
      	hero:SetRespawnsDisabled(true)
     end
 end
 
-function Tp_Max_Lvl_Player(team, arenanom)
+function Tp_Max_Lvl_Player(team)
 	local maxlvl = 0
 	for PlayerId = 1,5
     do
@@ -150,7 +153,6 @@ function Create_Player_Hero_Table_Safe_Information_Refresh_All()
    			end
    		end
 	end
-	print("MaxDirePlayers", MaxDirePlayers, "MaxRadiantPlayers", MaxRadiantPlayers)
 end
 
 function Safe_Information_Refresh_All(player)
@@ -162,6 +164,8 @@ function Safe_Information_Refresh_All(player)
 		Mana = player:GetMana(),
 		Place = player:GetAbsOrigin(),
 	}
+	player:SetHealth(player:GetMaxHealth())
+	player:SetMana(player:GetMaxMana())
 	for i = 0, 23
 	do
 		if player:GetAbilityByIndex(i) ~= nil then
@@ -182,7 +186,7 @@ end
 
 
 function Check_For_Dead_Heroes()
-	 print("here")
+
 	 local AlifeDire = 0
 	 local AlifeRadiant = 0
 	for i = 0,4
@@ -206,19 +210,25 @@ function Check_For_Dead_Heroes()
 			end
 		end
 	end
-	print (AlifeRadiant, AlifeDire)
 	if AlifeRadiant == 0 or AlifeDire == 0 then
-		 Duel_End()
+		 Duel_End(1)
 	end	
 end
 
-function Duel_End()
-	Refresh_State()
+function Duel_End(refresh)
+	Timers:RemoveTimer('Duel_End')
+	if refresh then
+		Refresh_State()
+	end
 	MaxRadiantPlayers = 0
 	MaxDirePlayers = 0
 	DUEL_STATUS = 0
 	AssigneableRadiantPlayers = 0
 	AssigneableDirePlayers = 0
+	DirePlayers = {}
+	RadiantPlayers = {}
+	HeroesOnThisFkingDuel = {}
+	arenanom = 0
 	Duels()
 end
 
@@ -227,9 +237,11 @@ function Refresh_State()
 	do
 		if DirePlayers[i] then
 			DirePlayers[i]:SetRespawnsDisabled(false)
-			DirePlayers[i]:SetHealth(DirePlayers[i].InfBeforeDuel.Health)
-			DirePlayers[i]:SetMana(DirePlayers[i].InfBeforeDuel.Mana)
-			FindClearSpaceForUnit(DirePlayers[i], DirePlayers[i].InfBeforeDuel.Place, true)
+			if DirePlayers[i]:IsAlive() then
+				DirePlayers[i]:SetHealth(DirePlayers[i].InfBeforeDuel.Health)
+				DirePlayers[i]:SetMana(DirePlayers[i].InfBeforeDuel.Mana)
+				FindClearSpaceForUnit(DirePlayers[i], DirePlayers[i].InfBeforeDuel.Place, true)
+			end
 			for j = 0, 23
 			do
 				if DirePlayers[i]:GetAbilityByIndex(j) ~= nil then
@@ -245,10 +257,12 @@ function Refresh_State()
 			end
 		end
 		if RadiantPlayers[i] then
-						RadiantPlayers[i]:SetRespawnsDisabled(false)
-			RadiantPlayers[i]:SetHealth(RadiantPlayers[i].InfBeforeDuel.Health)
-			RadiantPlayers[i]:SetMana(RadiantPlayers[i].InfBeforeDuel.Mana)
-			FindClearSpaceForUnit(RadiantPlayers[i], RadiantPlayers[i].InfBeforeDuel.Place, true)
+			RadiantPlayers[i]:SetRespawnsDisabled(false)
+			if RadiantPlayers[i]:IsAlive() then
+				RadiantPlayers[i]:SetHealth(RadiantPlayers[i].InfBeforeDuel.Health)
+				RadiantPlayers[i]:SetMana(RadiantPlayers[i].InfBeforeDuel.Mana)
+				FindClearSpaceForUnit(RadiantPlayers[i], RadiantPlayers[i].InfBeforeDuel.Place, true)
+			end
 			for j = 0, 23
 			do
 				if RadiantPlayers[i]:GetAbilityByIndex(j) ~= nil then
