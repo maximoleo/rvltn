@@ -14,9 +14,11 @@ require('libraries/projectiles')
 require('libraries/animations')
 require('libraries/attachments')
 require('libraries/playertables')
+require('libraries/playerresource')
 require('libraries/containers')
 require('libraries/modmaker')
 require('libraries/pathgraph')
+
 require('libraries/selection')
 
 require('internal/gamemode')
@@ -39,13 +41,27 @@ function GameMode:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game")
 end
 
+function GameMode:OnStrategyTime()
+end
+
+function GameMode:OnPreGame()
+  Find_Runes()
+  Entities:FindByName(nil, "Fountain_radiant"):SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
+  Entities:FindByName(nil, "Fountain_dire"):SetAttackCapability(DOTA_UNIT_CAP_RANGED_ATTACK)
+end
+
 function GameMode:OnHeroInGame(hero)
   DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
+ -- local item = CreateItem("item_bow", hero, hero)
+ -- hero:AddItem(item)
+  Gold:Init()
 end
 function GameMode:OnGameInProgress()
   Enable_Spawn()
   Duels()
-
+  Enable_Rune_Spawn()
+  Couriers()
+  GameRules:SetUseUniversalShopMode(true)
 end
 
 

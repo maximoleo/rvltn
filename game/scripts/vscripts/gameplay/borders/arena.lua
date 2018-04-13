@@ -27,6 +27,7 @@ function OutOfDuel(triger)
     	end
   		})
 end
+
 function TpIfNeed(triger)
 	if DUEL_STATUS == 2 and NotOnDuel(triger.activator) and IsValidEntity(triger.activator) then
 			if triger.activator:GetTeamNumber() == 2 then

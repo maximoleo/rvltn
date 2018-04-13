@@ -1,0 +1,277 @@
+"DOTAItems"
+{
+    "item_recipe_silver_alebard"
+    {
+    	"BaseClass"           "item_datadriven"
+	    "Model"               "models/props_gameplay/recipe.mdl"
+	    "AbilityTextureName"  "item_recipe"
+	    "ItemCost"            "0"
+	    "ItemShopTags"        ""
+	    "ItemRecipe"          "1"
+	    "ItemResult"          "item_silver_alebard"
+	    "ItemRequirements"
+	    {
+	        "01"           "item_heavens_halberd;item_silver_edge"
+	    }
+  	}
+
+  "item_silver_alebard"
+  	{	
+	    "BaseClass"           		"item_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"	    "AbilityTextureName"  "silver_alebard"
+	    "ItemQuality"         		"legendary"
+	    "ItemDeclarations"    		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+	    "ScriptFile"                "item_silver_alebard.lua"
+
+		"AbilityCooldown"				"22.0"
+		"AbilitySharedCooldown"			"shadow_blade"
+	    // Special
+	    //-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_evasion"			"25"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"55"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_all"				"23"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_chance"			"35"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_movement"	"-20"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_attack"		"-20"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_movement_range"	"-10"
+			}			
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_attack_range"		"-10"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"maim_duration"			"5.0"
+			}			
+			"10"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"disarm_range"				"5.0"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"disarm_melee"				"3.0"
+			}	
+			"12"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"disarm_cast_range_tooltip"	"600"
+			}				
+			"13"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"windwalk_duration"		"14.0"
+			}
+			"14"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"windwalk_movement_speed"	"25"
+			}
+			"15"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"windwalk_fade_time"	"0.3"
+			}
+			"16"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"windwalk_bonus_damage"	"175"
+			}
+			"17"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"backstab_reduction"	"-50"
+			}
+			"18"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"backstab_duration"		"4"
+			}
+			"19"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"30"
+			}	
+			"20"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"silver_alebard_duration"	"30"
+			}	
+		}
+		"OnSpellStart"
+		{
+			"DelayedAction"
+			{
+				"Delay"     "%windwalk_fade_time"
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_item_edge_of_vyse_active"
+						"Target" 		"CASTER"
+					}
+				}
+			}
+		}
+
+
+		"Modifiers"
+	    {
+	    	"modifier_item_edge_of_vyse_active"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				"IsDebuff"			"0"
+				"IsPurgable"		"1"
+				"Duration"			"%windwalk_duration"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%windwalk_bonus_movement_speed_percentage"
+				}
+
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_CANNOT_MISS"			"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+				"OnAttack"
+				{
+					"RemoveModifier"
+					{
+						"Target"			"CASTER"
+						"ModifierName"		"modifier_item_edge_of_vyse_active"
+					}
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_item_edge_of_vyse_attack"
+						"Target" 		"CASTER"
+					}
+				}
+
+				"OnAbilityExecuted"
+				{
+					"RemoveModifier"
+					{
+						"Target"			"CASTER"
+						"ModifierName"		"modifier_item_edge_of_vyse_active"
+					}
+				}
+
+				"OnCreated"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_invisible"
+						"Target" 		"CASTER"
+					}
+
+					"FireSound"
+					{
+						"EffectName"	"DOTA_Item.InvisibilitySword.Activate"
+						"Target" 		"TARGET"
+					}
+				}
+
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_invisible"
+						"Target" 		"CASTER"
+					}
+				}
+			}
+
+			"modifier_item_edge_of_vyse_attack"
+			{
+				"Passive"			"0"
+				"IsHidden"			"1"
+
+				"States"
+				{
+					"MODIFIER_STATE_CANNOT_MISS"			"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"Target"			"CASTER"
+						"ModifierName"		"modifier_item_edge_of_vyse_attack"
+					}
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_item_edge_of_vyse_debuff"
+						"Target" 		"TARGET"
+						"Duration"		"%silver_alebard_duration"
+					}
+				}
+			}
+
+			"modifier_item_edge_of_vyse_debuff"
+			{
+				"Passive"			"0"
+				"IsHidden"			"1"
+
+				"EffectName"		"particles/items3_fx/silver_edge.vpcf"
+				"EffectAttachType"	"follow_origin"
+
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"States"
+				{
+					"MODIFIER_STATE_PASSIVES_DISABLED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+				"OnCreated"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_heavens_halberd_debuff"
+						"Target" 		"TARGET"
+						"Duration"		"%silver_alebard_duration"
+					}
+
+				}
+			}
+	    }
+  	}
+
+}

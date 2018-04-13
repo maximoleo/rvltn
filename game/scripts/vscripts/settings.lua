@@ -11,7 +11,7 @@ POST_GAME_TIME = 60.0                   -- How long should we let people look at
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
 
 GOLD_PER_TICK = 1                     -- How much gold should players get per tick?
-GOLD_TICK_TIME = 5                      -- How long should we wait in seconds between gold ticks?
+GOLD_TICK_TIME = 0.5                      -- How long should we wait in seconds between gold ticks?
 
 RECOMMENDED_BUILDS_DISABLED = false     -- Should we disable the recommened builds for heroes
 CAMERA_DISTANCE_OVERRIDE = -1           -- How far out should we allow the camera to go?  Use -1 for the default (1134) while still allowing for panorama camera distance changes
@@ -47,9 +47,35 @@ MAX_LEVEL = 100                          -- What level should we let heroes get 
 USE_CUSTOM_XP_VALUES = true             -- Should we use custom XP values to level up heroes, or the default Dota numbers?
 
 -- Fill this table up with the required XP per level if you want to change it
-XP_PER_LEVEL_TABLE = {}
-for i=1,MAX_LEVEL do
-  XP_PER_LEVEL_TABLE[i] = (i-1) * 100
+XP_PER_LEVEL_TABLE = {
+	0,
+	240,
+	600,
+	1080,
+	1680,
+	2300,
+	2940,
+	3600,
+	4280,
+	5080,
+	5900,
+	6740,
+	7640,
+	8865,
+	10115,
+	11390,
+	12690,
+	14015,
+	15415,
+	16905,
+	18505,
+	20405,
+	22605,
+	25105,
+	27800,
+}
+for i = #XP_PER_LEVEL_TABLE + 1, MAX_LEVEL do
+  XP_PER_LEVEL_TABLE[i] = XP_PER_LEVEL_TABLE[i - 1] + (300 * ( i - 15 ))
 end
 
 ENABLE_FIRST_BLOOD = true               -- Should we enable first blood for the first kill in this game?

@@ -20,12 +20,15 @@ function Precache( context )
   -- It it likely that precaching a single particle system will precache all of its children, but this may not be guaranteed
   PrecacheResource("particle", "particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf", context)
   PrecacheResource("particle_folder", "particles/test_particle", context)
-
+  PrecacheResource("particle",    "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf", context)
+  
   -- Models can also be precached by folder or individually
   -- PrecacheModel should generally used over PrecacheResource for individual models
   PrecacheResource("model_folder", "particles/heroes/antimage", context)
   PrecacheResource("model", "particles/heroes/viper/viper.vmdl", context)
   PrecacheModel("models/heroes/viper/viper.vmdl", context)
+  PrecacheModel("models/props_structures/dire_fountain001.vmdl", context)
+
   --PrecacheModel("models/props_gameplay/treasure_chest001.vmdl", context)
   --PrecacheModel("models/props_debris/merchant_debris_chest001.vmdl", context)
   --PrecacheModel("models/props_debris/merchant_debris_chest002.vmdl", context)
@@ -35,8 +38,18 @@ function Precache( context )
 
   -- Entire items can be precached by name
   -- Abilities can also be precached in this way despite the name
-  PrecacheItemByNameSync("example_ability", context)
-  PrecacheItemByNameSync("item_example_item", context)
+  PrecacheItemByNameSync("item_bow", context)
+  PrecacheItemByNameSync("item_bow_2", context)
+  PrecacheItemByNameSync("item_bottle_custom", context)
+  PrecacheItemByNameSync("item_gang_gold", context)
+  PrecacheItemByNameSync("item_recipe_sange_and_yasha_and_kaya", context)
+  PrecacheItemByNameSync("item_sange_and_yasha_and_kaya", context)
+  PrecacheItemByNameSync("item_recipe_sange_and_kaya", context)
+  PrecacheItemByNameSync("item_sange_and_kaya", context)
+  PrecacheItemByNameSync("item_recipe_kaya_and_yasha", context)
+  PrecacheItemByNameSync("item_kaya_and_yasha", context)
+  PrecacheItemByNameSync("item_silver_alebard", context)
+  PrecacheItemByNameSync("item_fancy_ward", context)
 
   -- Entire heroes (sound effects/voice/models/particles) can be precached with PrecacheUnitByNameSync
   -- Custom units from npc_units_custom.txt can also have all of their abilities and precache{} blocks precached in this way

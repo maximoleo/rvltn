@@ -1,0 +1,90 @@
+"DOTAItems"
+{
+    "item_recipe_bow"
+    {
+    	"BaseClass"           "item_datadriven"
+	    "Model"               "models/props_gameplay/recipe.mdl"
+	    "AbilityTextureName"  "item_recipe"
+	    "ItemCost"            "0"
+	    "ItemShopTags"        ""
+	    "ItemRecipe"          "1"
+	    "ItemResult"          "item_bow"
+	    "ItemRequirements"
+	    {
+	        "01"           "item_ogre_axe;item_staff_of_wizardry;item_blade_of_alacrity;item_wraith_band;item_null_talisman;item_bracer"
+	    }
+  }
+
+  "item_bow"
+  	{	
+	    "BaseClass"           "item_datadriven"
+	    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"  "bow"
+	    "ItemQuality"         "legendary"
+	    "ItemDeclarations"    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+
+	    // Special
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	      "01"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "damage_percent"    "30"
+	      }
+	      "02"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "range"           "250"
+	      }
+	      "03"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "bonus_all"       "22"
+	      }
+	      "04"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "bonus_damage"      "16"
+	      }
+	    }
+
+	    "OnProjectileHitUnit"
+	    {
+	      "DeleteOnHit" "1"
+	      "RunScript"
+	      {
+	        "ScriptFile"  "items/item_bow.lua"
+	        "Function"    "SplitShotDamage"
+	        "Damage_percent"  "%damage_percent"
+	      }
+	    }
+
+	    "Modifiers"
+	    {
+			"modifier_item_bow"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_all"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_all"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_all"
+				}
+				"OnAttack"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/item_bow.lua"
+						"Function"		"SplitShotLaunch"
+					}
+				}
+			}
+	    }
+  	}
+
+}

@@ -1,0 +1,21 @@
+"DOTAItems"
+{
+    "item_gang_gold"
+  	  {
+		   // General
+		    //-------------------------------------------------------------------------------------------------------------
+		    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		    "BaseClass"                 "item_datadriven"
+		    "ScriptFile"                "items/gang_gold.lua"
+		    "AbilityTextureName"        "gang_gold" 
+
+		    // Item Info
+		    //-------------------------------------------------------------------------------------------------------------
+		    "ItemCost"              "300"
+		    "ItemShopTags"          "item_gang_gold"
+		    "ItemStackable"         "0"
+	        "AbilityCooldown"       "1.5"
+
+
+      }
+}

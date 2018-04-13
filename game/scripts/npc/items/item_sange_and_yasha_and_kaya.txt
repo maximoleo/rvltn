@@ -1,0 +1,291 @@
+"DOTAItems"
+{
+	"item_recipe_sange_and_yasha_and_kaya"
+	{
+		"BaseClass"                     "item_datadriven"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"ItemCost"						"0"
+		"ItemShopTags"					""
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_sange_and_yasha_and_kaya"
+		"ItemRequirements"
+		{
+			"01"						"item_yasha;item_sange;item_kaya"
+			"02"						"item_sange_and_yasha;item_kaya"
+			"03"						"item_kaya_and_yasha;item_sange"
+			"04"						"item_sange_and_kaya;item_yasha"
+		}
+	}
+
+	"item_sange_and_yasha_and_kaya"
+	{
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"            "kys"
+	    "ItemDeclarations"    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_all"				"16"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"16"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement_speed"	"8"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"			"10"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_chance"			"40"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_movement"	"-26"
+			}			
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_attack"		"-26"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_movement_range"	"-13"
+			}			
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_attack_range"		"-13"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"maim_duration"			"5.0"
+			}
+			"12"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"manacost_reduction"	"10"
+			}
+		}
+		"Modifiers"
+	    {
+	    	"modifier_sange_and_yasha_and_kaya"
+	    	{
+	    		"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_all"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_all"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_all"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%bonus_movement_speed"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"    "%spell_amp"
+					"MODIFIER_PROPERTY_MANACOST_PERCENTAGE"         "%manacost_reduction"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
+				}
+	    	}
+	    }
+	}
+
+	"item_recipe_sange_and_kaya"
+	{
+		"BaseClass"                     "item_datadriven"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"ItemCost"						"0"
+		"ItemShopTags"					""
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_sange_and_kaya"
+		"ItemRequirements"
+		{
+			"01"						"item_sange;item_kaya"
+		}
+	}
+
+	"item_sange_and_kaya"
+	{
+	    "BaseClass"                     "item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"            "sk"
+	    "ItemQuality"                   "legendary"
+	    "ItemDeclarations"              "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+
+	    // Special
+	    //-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"16"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect"		"16"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"			"10"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"manacost_reduction"	"10"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_chance"		"40"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_movement"	"-26"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_attack"		"-26"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_movement_range"	"-13"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_attack_range"	"-13"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"maim_duration"			"5"
+			}
+		}
+	    "Modifiers"
+	    {
+	    	"modifier_sange_and_kaya"
+	    	{
+	    		"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intellect"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"    "%spell_amp"
+					"MODIFIER_PROPERTY_MANACOST_PERCENTAGE"         "%manacost_reduction"
+				}
+	    	}
+	    }
+	}
+
+	"item_recipe_kaya_and_yasha"
+	{
+		"BaseClass"                     "item_datadriven"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"ItemCost"						"0"
+		"ItemShopTags"					""
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_kaya_and_yasha"
+		"ItemRequirements"
+		{
+			"01"						"item_yasha;item_kaya"
+		}
+	}
+
+	"item_kaya_and_yasha"
+	{
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"            "ky"
+	    "ItemDeclarations"    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+
+		"AbilitySpecial"
+		{
+			
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"16"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect"		"16"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"16"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement_speed"	"8"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"			"10"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"manacost_reduction"	"10"
+			}
+		}
+
+	    "Modifiers"
+	    {
+	    	"modifier_kaya_and_yasha"
+	    	{
+	    		"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intellect"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%bonus_movement_speed"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"    "%spell_amp"
+					"MODIFIER_PROPERTY_MANACOST_PERCENTAGE"         "%manacost_reduction"
+				}
+	    	}
+	    }
+	}
+}

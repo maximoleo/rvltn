@@ -1,0 +1,143 @@
+"DOTAItems"
+{
+	"item_recipe_bow_2"
+	{
+		"BaseClass"						"item_datadriven"
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"AbilityTextureName"			"item_recipe"
+		"ItemCost"						"1405"
+		"ItemShopTags"					""
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_bow_2"
+		"ItemRequirements"
+		{
+			"01"						"item_bow;item_sange_and_yasha_and_kaya"
+			"02"						"item_bow;item_sange_and_kaya;item_yasha"
+			"03"						"item_bow;item_sange;item_yasha_and_kaya"
+			"04"						"item_bow;item_sange_and_yasha;item_kaya"
+
+		}
+	}
+
+	"item_bow_2"
+	{
+		"BaseClass"						"item_datadriven"
+		"ScriptFile"					"items/item_bow"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"bow_2"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_damage"					"50"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_all"						"39"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attack_speed"			"39"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_movement_speed"		"8"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"manacost_reduction"		"10"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_chance"			"40"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_movement"	"-26"
+			}			
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_attack"		"-26"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_movement_range"	"-13"
+			}			
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_attack_range"		"-13"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"maim_duration"			"5.0"
+			}
+	        "12"
+	      	{
+	       		"var_type"						"FIELD_INTEGER"
+	        	"damage_percent"    			"100"
+	      	}
+	      	"13"
+	      	{
+	        	"var_type"       				"FIELD_INTEGER"
+	        	"range"     				    "370"
+	      	}
+			"14"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"spell_amp"					"10"
+			}
+		}
+
+		"OnProjectileHitUnit"
+	    {
+	      "DeleteOnHit" "1"
+	      "RunScript"
+	      {
+	        "ScriptFile"  "items/item_bow.lua"
+	        "Function"    "SplitShotDamage"
+	        "Damage_percent"  "%damage_percent"
+	      }
+	    }
+
+	    "Modifiers"
+	    {
+			"modifier_item_bow"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_all"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_all"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_all"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%bonus_movement_speed"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"    "%spell_amp"
+					"MODIFIER_PROPERTY_MANACOST_PERCENTAGE"         "%manacost_reduction"
+				}
+				"OnAttack"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/item_bow.lua"
+						"Function"		"SplitShotLaunch"
+					}
+				}
+			}
+	    }	
+	}
+}

@@ -1,4 +1,5 @@
 -- This file contains all barebones-registered events and has already set up the passed-in parameters for your use.
+LinkLuaModifier("modifier_courier_haste", "gameplay/courier/courier.lua", LUA_MODIFIER_MOTION_NONE)
 
 -- Cleanup a player when they leave
 function GameMode:OnDisconnect(keys)
@@ -17,14 +18,47 @@ function GameMode:OnGameRulesStateChange(keys)
   DebugPrintTable(keys)
 
   local newState = GameRules:State_Get()
+  if newState == DOTA_GAMERULES_STATE_PRE_GAME then
+     GameMode:OnPreGame()
+  end
 end
 
 -- An NPC has spawned somewhere in game.  This includes heroes
 function GameMode:OnNPCSpawned(keys)
   DebugPrint("[BAREBONES] NPC Spawned")
   DebugPrintTable(keys)
-
+  local  i = 1
   local npc = EntIndexToHScript(keys.entindex)
+  if npc:GetName() == "npc_dota_courier" then
+    npc:UpgradeToFlyingCourier()
+    npc:AddNewModifier(nil, nil, "modifier_courier_haste", nil)
+  end
+  if npc:IsHero() then
+    if DUEL_STATUS == 2 then
+      while DirePlayers[i] and DirePlayers[i]:GetName() ~= npc:GetName() and i < 6 do
+        i = i + 1
+      end
+      if i > 1 and DirePlayers[i - 1] then
+        i = 1
+        while RadiantPlayers[i] and RadiantPlayers[i]:GetName() ~= npc:GetName() and i < 5 do
+          i = i + 1
+        end
+          if RadiantPlayers[i].reincarnating == 1 then
+            RadiantPlayers[i].reincarnating = 0
+            return
+          else 
+            npc:AddNewModifier(nil, nil, "modifier_out_of_duel", nil)
+          end
+      else 
+        if DirePlayers[i] and DirePlayers[i].reincarnating == 1 then
+          DirePlayers[i].reincarnating = 0
+          return
+        else 
+          npc:AddNewModifier(nil, nil, "modifier_out_of_duel", nil)
+        end
+      end
+    end
+  end
 end
 
 -- An entity somewhere has been hurt.  This event fires very often with many units so don't do too many expensive
@@ -32,7 +66,6 @@ end
 function GameMode:OnEntityHurt(keys)
   --DebugPrint("[BAREBONES] Entity Hurt")
   --DebugPrintTable(keys)
-
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
   if keys.entindex_attacker ~= nil and keys.entindex_killed ~= nil then
     local entCause = EntIndexToHScript(keys.entindex_attacker)
@@ -43,6 +76,19 @@ function GameMode:OnEntityHurt(keys)
 
     if keys.entindex_inflictor ~= nil then
       damagingAbility = EntIndexToHScript( keys.entindex_inflictor )
+    end
+
+    if entCause:IsHero() and entVictim:IsHero() then
+        for i = 0, 5 do
+            if entCause:GetItemInSlot(i) and entCause:GetItemInSlot(i):GetName() == "item_gang_gold" and entCause:GetItemInSlot(i):IsCooldownReady() then
+                entCause:AddExperience(20, 0, false, false)
+                Gold:AddGold(entCause, 10)
+                if damagingAbility then
+                    entCause:GetItemInSlot(i):StartCooldown(entCause:GetItemInSlot(i):GetCooldown(1))
+                end
+                entCause:GetItemInSlot(i):StartCooldown(1)
+            end
+        end
     end
   end
 end
@@ -167,9 +213,11 @@ function GameMode:OnRuneActivated (keys)
   DebugPrint('[BAREBONES] OnRuneActivated')
   DebugPrintTable(keys)
 
-  local player = PlayerResource:GetPlayer(keys.PlayerID)
+  local player = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
+
   local rune = keys.rune
 
+  BottleCheck(player, rune)
   --[[ Rune Can be one of the following types
   DOTA_RUNE_DOUBLEDAMAGE
   DOTA_RUNE_HASTE
@@ -229,7 +277,6 @@ function GameMode:OnEntityKilled( keys )
   if keys.entindex_attacker ~= nil then
     killerEntity = EntIndexToHScript( keys.entindex_attacker )
   end
-
   -- The ability/item used to kill, or nil if not killed by an item/ability
   local killerAbility = nil
 
@@ -243,7 +290,7 @@ function GameMode:OnEntityKilled( keys )
   if killedUnit then
     if (killedUnit:IsHero()) then
       if DUEL_STATUS == 2 then
-        Check_For_Dead_Heroes()
+        Check_For_Dead_Heroes(killedUnit)
       end
     end
   end

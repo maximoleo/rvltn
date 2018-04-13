@@ -6,7 +6,7 @@ function GameMode:_InitGameMode()
   end
 
   -- Setup rules
-  --[[
+  
   GameRules:SetHeroRespawnEnabled( ENABLE_HERO_RESPAWN )
   GameRules:SetUseUniversalShopMode( UNIVERSAL_SHOP_MODE )
   GameRules:SetSameHeroSelectionEnabled( ALLOW_SAME_HERO_SELECTION )
@@ -29,7 +29,6 @@ function GameMode:_InitGameMode()
   GameRules:SetCustomGameEndDelay( GAME_END_DELAY )
   GameRules:SetCustomVictoryMessageDuration( VICTORY_MESSAGE_DURATION )
   GameRules:SetStartingGold( STARTING_GOLD )
-]]--
 
 
   -- This is multiteam configuration stuff
