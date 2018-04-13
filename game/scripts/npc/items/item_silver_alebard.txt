@@ -22,7 +22,7 @@
 	    "ItemQuality"         		"legendary"
 	    "ItemDeclarations"    		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
 	    "ScriptFile"                "item_silver_alebard.lua"
-
+	    "AbilityTextureName"        "silver_alebard"
 		"AbilityCooldown"				"22.0"
 		"AbilitySharedCooldown"			"shadow_blade"
 	    // Special
@@ -140,7 +140,7 @@
 				{
 					"ApplyModifier"
 					{
-						"ModifierName"	"modifier_item_edge_of_vyse_active"
+						"ModifierName"	"modifier_item_silver_alebard_active"
 						"Target" 		"CASTER"
 					}
 				}
@@ -150,7 +150,7 @@
 
 		"Modifiers"
 	    {
-	    	"modifier_item_edge_of_vyse_active"
+	    	"modifier_item_silver_alebard_active"
 			{
 				"Passive"			"0"
 				"IsHidden"			"0"
@@ -176,11 +176,11 @@
 					"RemoveModifier"
 					{
 						"Target"			"CASTER"
-						"ModifierName"		"modifier_item_edge_of_vyse_active"
+						"ModifierName"		"modifier_item_silver_alebard_active"
 					}
 					"ApplyModifier"
 					{
-						"ModifierName"	"modifier_item_edge_of_vyse_attack"
+						"ModifierName"	"modifier_item_silver_alebard_attack"
 						"Target" 		"CASTER"
 					}
 				}
@@ -190,7 +190,7 @@
 					"RemoveModifier"
 					{
 						"Target"			"CASTER"
-						"ModifierName"		"modifier_item_edge_of_vyse_active"
+						"ModifierName"		"modifier_item_silver_alebard_active"
 					}
 				}
 
@@ -219,7 +219,7 @@
 				}
 			}
 
-			"modifier_item_edge_of_vyse_attack"
+			"modifier_item_silver_alebard_attack"
 			{
 				"Passive"			"0"
 				"IsHidden"			"1"
@@ -234,18 +234,18 @@
 					"RemoveModifier"
 					{
 						"Target"			"CASTER"
-						"ModifierName"		"modifier_item_edge_of_vyse_attack"
+						"ModifierName"		"modifier_item_silver_alebard_attack"
 					}
 					"ApplyModifier"
 					{
-						"ModifierName"	"modifier_item_edge_of_vyse_debuff"
+						"ModifierName"	"modifier_item_silver_alebard_debuff"
 						"Target" 		"TARGET"
 						"Duration"		"%silver_alebard_duration"
 					}
 				}
 			}
 
-			"modifier_item_edge_of_vyse_debuff"
+			"modifier_item_silver_alebard_debuff"
 			{
 				"Passive"			"0"
 				"IsHidden"			"1"
