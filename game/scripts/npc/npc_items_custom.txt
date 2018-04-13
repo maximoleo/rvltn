@@ -6,6 +6,7 @@
 #base "items/item_silver_alebard.txt"
 #base "items/item_sange_and_yasha_and_kaya.txt"
 #base "items/item_fancy_ward.txt"
+#base "items/item_banana.txt"
 
 "DOTAItems"
 {

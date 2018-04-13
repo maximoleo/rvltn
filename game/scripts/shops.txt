@@ -15,6 +15,7 @@
     "item"    "item_ward_observer"
     "item"    "item_ward_sentry"
     "item"    "item_bottle_custom"
+    "item"    "item_banana"
   }
 
   "attributes"
