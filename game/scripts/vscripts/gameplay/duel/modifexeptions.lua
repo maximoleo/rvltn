@@ -80,7 +80,12 @@ modifexeptions =
 	modifier_skeleton_king_reincarnation = 1,
 	modifier_skeleton_king_reincarnation_scepter = 1,
 	modifier_skeleton_king_reincarnation_scepter_active = 1,
-	modifier_zuus_static_field = 1
+	modifier_zuus_static_field = 1,
+	modifier_spectre_spectral_dagger_in_path = 1,
+	modifier_spectre_spectral_dagger_path_phased = 1,
+	modifier_spectre_spectral_dagger_path = 1,
+	modifier_fountain_aura_custom = 1,
+	
 
 }--Huskar spear
 --monkey jingu

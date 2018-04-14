@@ -178,30 +178,28 @@ function Create_Player_Hero_Table_Safe_Information_Refresh_All()
  	for PlayerId = 0,9 
  	do
  		local player = PlayerResource:GetPlayer(PlayerId)
-   		if player ~= nil then
-   			if player:GetAssignedHero() then
-   				if player:GetAssignedHero():GetName() ~= "npc_dota_hero_meepo" then
-   					Safe_Information_Refresh_All(player:GetAssignedHero())
-   				else
-   					for _,v in pairs(Entities:FindAllByName("npc_dota_hero_meepo")) do
-    					Safe_Information_Refresh_All(v)	
-    				end
-   				end
-   				if player:GetTeam() == DOTA_TEAM_BADGUYS then
-   					Assign_Player(DirePlayers, MaxDirePlayers, player, "dire")
-   					if (DirePlayers[MaxDirePlayers + 1]:IsAlive()) then
-						AssigneableDirePlayers = AssigneableDirePlayers + 1
-					end
-   					MaxDirePlayers = MaxDirePlayers + 1	
-   				elseif player:GetTeam() == DOTA_TEAM_GOODGUYS then
-   					Assign_Player(RadiantPlayers, MaxRadiantPlayers, player, "radiant")
-   					if  (RadiantPlayers[MaxRadiantPlayers + 1]:IsAlive()) then
-   						AssigneableRadiantPlayers = AssigneableRadiantPlayers + 1
-   					end
-   					MaxRadiantPlayers = MaxRadiantPlayers + 1
-   				end
-   			end
-   		end
+   		if player and player:GetAssignedHero() then
+			if player:GetAssignedHero():GetName() ~= "npc_dota_hero_meepo" then
+				Safe_Information_Refresh_All(player:GetAssignedHero())
+			else
+				for _,v in pairs(Entities:FindAllByName("npc_dota_hero_meepo")) do
+					Safe_Information_Refresh_All(v)	
+				end
+			end
+			if player:GetTeam() == DOTA_TEAM_BADGUYS then
+				Assign_Player(DirePlayers, MaxDirePlayers, player, "dire")
+				if (DirePlayers[MaxDirePlayers + 1]:IsAlive()) then
+				AssigneableDirePlayers = AssigneableDirePlayers + 1
+			end
+				MaxDirePlayers = MaxDirePlayers + 1	
+			elseif player:GetTeam() == DOTA_TEAM_GOODGUYS then
+				Assign_Player(RadiantPlayers, MaxRadiantPlayers, player, "radiant")
+				if  (RadiantPlayers[MaxRadiantPlayers + 1]:IsAlive()) then
+					AssigneableRadiantPlayers = AssigneableRadiantPlayers + 1
+				end
+				MaxRadiantPlayers = MaxRadiantPlayers + 1
+			end
+		end
 	end
 end
 
@@ -298,29 +296,28 @@ end
 
 function Duel_End(refresh)
 	Timers:RemoveTimer('Duel_End')
-	if refresh ~= 0 then
-		for i = 1, 5
-		do
-			if DirePlayers[i] then
-				if DirePlayers[i]:GetName() == "npc_dota_hero_meepo" then 
-					for _,v in pairs(Entities:FindAllByName("npc_dota_hero_meepo")) do
-						Refresh_State(v)
-					end
-				else
-					Refresh_State(DirePlayers[i])
+	for i = 1, 5
+	do
+		if DirePlayers[i] then
+			if DirePlayers[i]:GetName() == "npc_dota_hero_meepo" then 
+				for _,v in pairs(Entities:FindAllByName("npc_dota_hero_meepo")) do
+					Refresh_State(v)
 				end
-			end
-			if RadiantPlayers[i] then
-				if RadiantPlayers[i]:GetName() == "npc_dota_hero_meepo" then 
-					for _,v in pairs(Entities:FindAllByName("npc_dota_hero_meepo")) do
-						Refresh_State(v)
-					end
-				else
-					Refresh_State(RadiantPlayers[i])
-				end
+			else
+				Refresh_State(DirePlayers[i])
 			end
 		end
-	else
+		if RadiantPlayers[i] then
+			if RadiantPlayers[i]:GetName() == "npc_dota_hero_meepo" then 
+				for _,v in pairs(Entities:FindAllByName("npc_dota_hero_meepo")) do
+					Refresh_State(v)
+				end
+			else
+				Refresh_State(RadiantPlayers[i])
+			end
+		end
+	end
+	if refresh == 0 then		
 		print("Not enough players for duel")
 	end
 	MaxRadiantPlayers = 0

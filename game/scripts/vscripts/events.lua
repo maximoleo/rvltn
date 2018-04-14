@@ -108,6 +108,7 @@ function GameMode:OnItemPickedUp(keys)
   local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local itemname = keys.itemname
+  
 end
 
 -- A player has reconnected to the game.  This function can be used to repaint Player-based particles or change
@@ -206,6 +207,12 @@ function GameMode:OnTreeCut(keys)
 
   local treeX = keys.tree_x
   local treeY = keys.tree_y
+  if math.random(0,9) < 4 then
+      print("ok")
+      local banan = CreateItem("item_banana", nil, nil)
+      banan = CreateItemOnPositionSync(Vector(treeX, treeY, 0), banan)
+      banan:SetAbsOrigin(GetGroundPosition(Vector(treeX, treeY, o), banan))
+  end
 end
 
 -- A rune was activated by a player
