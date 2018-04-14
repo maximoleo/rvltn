@@ -85,6 +85,7 @@ modifexeptions =
 	modifier_spectre_spectral_dagger_path_phased = 1,
 	modifier_spectre_spectral_dagger_path = 1,
 	modifier_fountain_aura_custom = 1,
+	modifier_item_bow = 1,
 	
 
 }--Huskar spear
