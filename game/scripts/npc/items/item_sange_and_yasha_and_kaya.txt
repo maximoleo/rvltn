@@ -108,6 +108,18 @@
 				}
 	    	}
 	    }
+	    "OnAttack"
+	    {
+	    	"Random"
+	    	{
+	    		"Chance"     "%maim_chance"
+	    		"OnSucsess"
+	    		{
+	    			"ApplyModifier"    "modifier_item_sange_and_yasha"
+	    			"Target"		   "TARGET"
+	    		}
+	    	}
+	    }
 	}
 
 	"item_recipe_sange_and_kaya"
@@ -208,6 +220,18 @@
 					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"    "%spell_amp"
 					"MODIFIER_PROPERTY_MANACOST_PERCENTAGE"         "%manacost_reduction"
 				}
+	    	}
+	    }
+	    "OnAttack"
+	    {
+	    	"Random"
+	    	{
+	    		"Chance"     "%maim_chance"
+	    		"OnSucsess"
+	    		{
+	    			"ApplyModifier"    "modifier_item_sange_and_yasha"
+	    			"Target"		   "TARGET"
+	    		}
 	    	}
 	    }
 	}

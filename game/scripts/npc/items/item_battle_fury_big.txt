@@ -1,0 +1,197 @@
+"DOTAItems"
+{
+    "item_recipe_battle_fury_big"
+    {
+    	"BaseClass"           "item_datadriven"
+	    "Model"               "models/props_gameplay/recipe.mdl"
+	    "AbilityTextureName"  "item_recipe"
+	    "ItemCost"            "2000"
+	    "ItemShopTags"        ""
+	    "ItemRecipe"          "1"
+	    "ItemResult"          "item_battle_fury_big"
+	    "ItemRequirements"
+	    {
+	        "01"           "item_sange_and_yasha_and_kaya;item_bfury"
+	    }
+ 	}
+	"item_battle_fury_big"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"4007"
+	    "BaseClass"                     "item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityTextureName"            "BF2"
+
+		"AbilityCastRange"				"350"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"4.0"
+
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"damage;health_regen;mana_regen;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"60"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen"	"8"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen"		"4"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_percent"	    "60"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"quelling_bonus"		"150"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"quelling_bonus_ranged"	"125"
+			}			
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_starting_width"	"150"
+			}			
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_ending_width"	"330"
+			}			
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_distance"		"625"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cast_range_tooltip"	"350"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cast_range_ward"		"450"
+			}
+			"12"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_quelling_bonus" "60"
+			}
+			"13"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_quelling_bonus_ranged"	"25"
+			}
+			"14"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_all"						"17"
+			}
+			"15"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attack_speed"			"39"
+			}
+			"16"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_movement_speed"	     	"8"
+			}
+			"17"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"manacost_reduction"	    	"10"
+			}
+			"18"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_chance"			"40"
+			}
+			"19"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_movement"	"-26"
+			}			
+			"20"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_attack"		"-26"
+			}
+			"21"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_movement_range"	"-13"
+			}			
+			"22"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"maim_slow_attack_range"		"-13"
+			}
+			"23"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"maim_duration"			"5.0"
+			}
+			"24"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"spell_amp"					"10"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_bf"
+			{
+	    		"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_all"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_all"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_all"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%bonus_movement_speed"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"    "%spell_amp"
+					"MODIFIER_PROPERTY_MANACOST_PERCENTAGE"         "%manacost_reduction"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
+				}
+
+	    		"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/item_battle_fury_big.lua"
+						"Function"		"attack"
+					}
+				}
+	    	}
+		}
+	}
+
+}

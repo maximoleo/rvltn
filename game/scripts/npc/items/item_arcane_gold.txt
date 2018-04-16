@@ -1,0 +1,54 @@
+"DOTAItems"
+{
+	"item_recipe_arcane_gold"
+    {
+    	"BaseClass"           "item_datadriven"
+	    "Model"               "models/props_gameplay/recipe.mdl"
+	    "AbilityTextureName"  "item_recipe"
+	    "ItemCost"            "0"
+	    "ItemShopTags"        ""
+	    "ItemRecipe"          "1"
+	    "ItemResult"          "item_arcane_gold"
+	    "ItemRequirements"
+	    {
+	    	"01" 			"item_arcane_boots;item_gang_gold"
+	    }
+  	}
+    "item_arcane_gold"
+  	  {
+		   // General
+		    //-------------------------------------------------------------------------------------------------------------
+		    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET|DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+		    "Model"						"models/props_gameplay/banana_prop_closed"
+		    "BaseClass"                 "item_lua"
+		    "ScriptFile"                "items/item_arcane_gold.lua"
+		    "AbilityTextureName"        "arcane_gold" 
+
+		    // Item Info
+		    //-------------------------------------------------------------------------------------------------------------
+		    "ItemStackable"         "0"
+
+	        "AbilityCooldown"       "30"
+	         // Special  
+		    //-------------------------------------------------------------------------------------------------------------
+		    "AbilitySpecial"
+		    {
+		      "01"
+		      {
+		        "var_type"        "FIELD_INTEGER"
+		        "inc_gpm"    		  "100"
+		      }
+		      "02"
+		      {
+		        "var_type"        "FIELD_INTEGER"
+		        "mana"            "40"
+		      } 
+		      "03"    
+		      {
+		      	"var_type"        "FIELD_INTEGER"
+		      	"radius"		"1000"
+		      }
+		    }
+		  
+      }
+}
