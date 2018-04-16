@@ -13,7 +13,7 @@
     {
       "RunScript"
       {
-        "ScriptFile"  "rune.lua"
+        "ScriptFile"  "gameplay/runes/rune.lua"
         "Function"    "SetMaxLevel"
       }
     }

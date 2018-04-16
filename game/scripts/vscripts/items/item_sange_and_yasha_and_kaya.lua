@@ -1,3 +1,7 @@
-item_sange_and_yasha_and_kaya = class({})
-item_sange_and_kaya = class({})
-item_kaya_and_yasha = class({})
+LinkLuaModifier("modifier_maim", "modifiers/modifier_maim.lua", LUA_MODIFIER_MOTION_NONE)
+
+function maim_attack(keys)
+	if not keys.attacker:IsRangedAttacker() then
+		DoCleaveAttack(keys.attacker, keys.target, keys.ability, math.random(keys.attacker:GetBaseDamageMax(), keys.attacker:GetBaseDamageMin()) * keys.ability:GetSpecialValueFor("cleave_percent")/100,  keys.ability:GetSpecialValueFor("cleave_starting_width"), keys.ability:GetSpecialValueFor("cleave_ending_width"), keys.ability:GetSpecialValueFor("cleave_distance"), "particles/items_fx/battlefury_cleave.vpcf" )
+	end
+end

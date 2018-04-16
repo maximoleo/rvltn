@@ -1,130 +1,143 @@
 "DOTAItems"
 {
-		"item_recipe_veil_of_corrosion"
+	"item_recipe_veil_of_corrosion"
+    {
+    	"BaseClass"           "item_datadriven"
+	    "Model"               "models/props_gameplay/recipe.mdl"
+	    "AbilityTextureName"  "item_recipe"
+	    "ItemCost"            "500"
+	    "ItemShopTags"        ""
+	    "ItemRecipe"          "1"
+	    "ItemResult"          "item_veil_of_corrosion"
+	    "ItemRequirements"
 	    {
-	    	"BaseClass"           "item_datadriven"
-		    "Model"               "models/props_gameplay/recipe.mdl"
-		    "AbilityTextureName"  "item_recipe"
-		    "ItemCost"            "500"
-		    "ItemShopTags"        ""
-		    "ItemRecipe"          "1"
-		    "ItemResult"          "item_veil_of_corrosion"
-		    "ItemRequirements"
-		    {
-		        "01"           "item_helm_of_iron_will;item_bracer;item_bracer"
-		    }
-	  	}
+	        "01"           "item_helm_of_iron_will;item_bracer;item_bracer"
+	    }
+  	}
 	"item_veil_of_corrosion"
-		{
-			 // General
-		    //-------------------------------------------------------------------------------------------------------------
-		    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT|DOTA_ABILITY_BEHAVIOR_AOE"
-		    "BaseClass"                 "item_datadriven"
-		    "ScriptFile"                "items/veil_of_corrosion.lua"
-		    
-		     // Stats
-		    //-------------------------------------------------------------------------------------------------------------
-			   "AbilityCooldown"         "16"
-			   "AbilityCastRange"        "1000"
-			   "AbilityCastPoint"        "0.0"
+	{
+		 // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT|DOTA_ABILITY_BEHAVIOR_AOE"
+	    "BaseClass"                 "item_datadriven"
+	    "ScriptFile"                "items/veil_of_corrosion.lua"
+	    
+	     // Stats
+	    //-------------------------------------------------------------------------------------------------------------
+		   "AbilityCooldown"         "16"
+		   "AbilityCastRange"        "1000"
+		   "AbilityCastPoint"        "0.0"
 
-		     // Special  
-		    //-------------------------------------------------------------------------------------------------------------
-		    "AbilitySpecial"
-		    {
-			     "01"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"bonus_armor"			"6"
-				}			
-				"02"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"health_reneg"			"5"
-				}
-				"03"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"bonus_strengt"			"14"
-				}
-				"04"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"bonus_intillegent"		"6"
-				}
-				"05"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"bonus_agility"	 		"6"
-				}
-				"06"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"debuff_duraction"		"16"
-				}
-				"07"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"debuff_radius"			"600"
-				}			
-				"08"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"cast_range"			"1000"
-				}
-				"09"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"armor_reduce"			"-5"
-				}			
-				"10"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"mana_cost"				"50
-				}
-				
-			}
-			"Modifiers"
-		    {
-		    	"modifier_veil_of_corrosion"
-		    	{
-		    		"Passive"			"1"
-					"IsHidden"			"1"
-					"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-
-					"Properties"
-					{
-						"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
-						"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intillegent"
-						"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strengt"
-						"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%bonus_armor"
-						"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"       "%health_reneg" 
-					}
-		    	}
-			}
-			"OnSpellStart"
+	     // Special  
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+		     "01"
 			{
-				"ActOnTargets"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"6"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health_reneg"			"5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strengt"			"14"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intillegent"		"6"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"	 		"6"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"debuff_duration"		"16"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"debuff_radius"			"600"
+			}			
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cast_range"			"1000"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor_reduce"			"-5"
+			}			
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_cost"				"50"
+			}
+			
+		}
+
+		"Modifiers"
+	    {
+	    	"modifier_veil_of_corrosion"
+	    	{
+	    		"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
 				{
-					"Target"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intillegent"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strengt"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%bonus_armor"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"       "%health_reneg" 
+				}
+	    	}
+	    	"VeilReduction"
+	    	{
+	    		"Passive"			"0"
+				"IsHidden"			"0"
+				"Duration"			"%debuff_duration"
+				"IsDebuff"          "1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"         "%armor_reduce"
+				}	
+	    	}
+		}
+		"OnSpellStart"
+		{
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"	"POINT"
+					"Radius"  	"%debuff_radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO|DOTA_UNIT_TARGET_BASIC"
+				}
+				"Action"
+				{
+					"ApplyModifier"
 					{
-						"Center"	"POINT"
-						"Radius"  	"%debuff_radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types" 	"DOTA_UNIT_TARGET_HERO|DOTA_UNIT_TARGET_BASIC"
-					}
-					"Action"
-					{
-						"ApplyModifier"
-						{
-							"Target"		"TARGET"
-							"ModifierName"	"VeilReduction"
-							
-						}
+						"Target"		"TARGET"
+						"ModifierName"	"VeilReduction"
+						
 					}
 				}
-
 			}
 		}
+	}
 }		
 	

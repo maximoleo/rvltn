@@ -106,6 +106,14 @@
 					"MODIFIER_PROPERTY_MANACOST_PERCENTAGE"         "%manacost_reduction"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
 				}
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/item_sange_and_yasha_and_kaya.lua"
+						"Function"		"maim_attack"
+					}
+				}
 	    	}
 	    }
 	}
@@ -208,8 +216,17 @@
 					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"    "%spell_amp"
 					"MODIFIER_PROPERTY_MANACOST_PERCENTAGE"         "%manacost_reduction"
 				}
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/item_sange_and_yasha_and_kaya.lua"
+						"Function"		"maim_attack"
+					}
+				}
 	    	}
 	    }
+
 	}
 
 	"item_recipe_kaya_and_yasha"
