@@ -86,6 +86,7 @@ modifexeptions =
 	modifier_spectre_spectral_dagger_path_phased = 1,
 	modifier_spectre_spectral_dagger_path = 1,
 	modifier_fountain_aura_custom = 1,
+<<<<<<< HEAD
 	modifier_huskar_burning_spear_self = 1,
 	modifier_huskar_burning_spear_counter = 1,
 	modifier_storm_spirit_overload_passive = 1,
@@ -338,6 +339,10 @@ modifexeptions =
 	modifier_bf = 1,
 
 }
+=======
+	modifier_item_bow = 1,
+	
+>>>>>>> 9d53eb20bf5916707475cea569155ca50f7878f6
 
 --elder natural order
 --dk 3
