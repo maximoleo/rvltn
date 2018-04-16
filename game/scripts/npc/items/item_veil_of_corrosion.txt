@@ -1,12 +1,26 @@
 "DOTAItems"
 {
+		"item_recipe_veil_of_corrosion"
+	    {
+	    	"BaseClass"           "item_datadriven"
+		    "Model"               "models/props_gameplay/recipe.mdl"
+		    "AbilityTextureName"  "item_recipe"
+		    "ItemCost"            "500"
+		    "ItemShopTags"        ""
+		    "ItemRecipe"          "1"
+		    "ItemResult"          "item_veil_of_corrosion"
+		    "ItemRequirements"
+		    {
+		        "01"           "item_helm_of_iron_will;item_bracer;item_bracer"
+		    }
+	  	}
 	"item_veil_of_corrosion"
 		{
 			 // General
 		    //-------------------------------------------------------------------------------------------------------------
 		    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT|DOTA_ABILITY_BEHAVIOR_AOE"
 		    "BaseClass"                 "item_datadriven"
-		    "ScriptFile"                "items/veil_of_corrosin.lua"
+		    "ScriptFile"                "items/veil_of_corrosion.lua"
 		    
 		     // Stats
 		    //-------------------------------------------------------------------------------------------------------------
@@ -61,7 +75,7 @@
 				"09"
 				{
 					"var_type"				"FIELD_INTEGER"
-					"armor_reduce"			"6"
+					"armor_reduce"			"-5"
 				}			
 				"10"
 				{
@@ -111,4 +125,6 @@
 				}
 
 			}
-}			
+		}
+}		
+	

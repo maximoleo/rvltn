@@ -86,7 +86,7 @@
 	        "12"
 	      	{
 	       		"var_type"						"FIELD_INTEGER"
-	        	"damage_percent"    			"50"
+	        	"damage_percent"    			"100"
 	      	}
 	      	"13"
 	      	{
@@ -113,7 +113,7 @@
 
 	    "Modifiers"
 	    {
-			"modifier_item_bow2"
+			"modifier_item_bow"
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"

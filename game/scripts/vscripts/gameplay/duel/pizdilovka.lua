@@ -20,7 +20,7 @@ function Duels()
 	local i = 10
 	 Timers:CreateTimer("PreDuel", {
     	useOldStyle = true,
-    	endTime = GameRules:GetGameTime() + 290,
+    	endTime = GameRules:GetGameTime() + 20,
     	callback = function()
 			if i == 10 then
 				EmitAnnouncerSound("announcer_ann_custom_countdown_" .. i)
@@ -246,7 +246,6 @@ function Safe_Information_Refresh_All(player)
 			player.InfBeforeDuel.Modifiers[i].caster = v:GetCaster()
 			player.InfBeforeDuel.Modifiers[i].ability = v:GetAbility()
 			player.InfBeforeDuel.Modifiers[i].name = v:GetName()
-			print(v:GetName())
 			player.InfBeforeDuel.Modifiers[i]["duration"] = v:GetDuration() - v:GetElapsedTime()
 			player:RemoveModifierByName(player.InfBeforeDuel.Modifiers[i].name)
 			i = i + 1
@@ -367,7 +366,7 @@ function Refresh_State(player)
 		for _,v in pairs(player.InfBeforeDuel.Items) do
 			if player:GetItemInSlot(j) then
 				if v.name == player:GetItemInSlot(j):GetName() then
-					player:GetItemInSlot(j):StartCooldown(v.cooldown)	
+					player:GetItemInSlot(j):StartCooldown(player:GetItemInSlot(j):GetCooldown(1) - v.cooldown)	
 				end
 			end
 		end
