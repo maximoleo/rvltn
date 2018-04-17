@@ -16,6 +16,41 @@
 		    "ItemStackable"         "0"
 	        "AbilityCooldown"       "1.5"
 
+	        "AbilitySpecial"
+	        {
+	        	"01"
+	        	{
+	        		"var_type"			"FIELD_INTEGER"
+	        		"gph_meele"			"6"
+	        	}
+	        	"02"
+	        	{
+	        		"var_type"			"FIELD_FLOAT"
+	        		"gph_ranged"		"4"
+	        	}
+	           	"03"
+	        	{
+	        		"var_type"			"FIELD_FLOAT"
+	        		"eph"	         	"10"
+	        	}
+	        }
+	        "Modifiers"
+	        {
+	        	"modifier_item_gang_gold"
+	        	{
 
+		    		"Passive"			"1"
+					"IsHidden"			"1"
+			       	"OnAttackLanded"
+			       	// "%attack_damage" is set to the damage value before mitigation
+			       	{
+			       		"RunScript"
+			       		{
+			       			"ScriptFile"	"items/item_gang_gold"
+			       			"Function"		"gang_gold_attack"
+			       		}
+			       	}
+		       	}
+		    }
       }
 }

@@ -45,7 +45,6 @@ function GameMode:OnStrategyTime()
 end
 
 function GameMode:OnPreGame()
-  Find_Runes()
   Entities:FindByName(nil, "Fountain_radiant"):SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)
   Entities:FindByName(nil, "Fountain_dire"):SetAttackCapability(DOTA_UNIT_CAP_RANGED_ATTACK)
 end
@@ -59,7 +58,6 @@ end
 function GameMode:OnGameInProgress()
   Enable_Spawn()
   Duels()
-  Enable_Rune_Spawn()
   Couriers()
   GameRules:SetUseUniversalShopMode(true)
 end

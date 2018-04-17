@@ -77,19 +77,6 @@ function GameMode:OnEntityHurt(keys)
     if keys.entindex_inflictor ~= nil then
       damagingAbility = EntIndexToHScript( keys.entindex_inflictor )
     end
-
-    if entCause:IsHero() and entVictim:IsHero() then
-        for i = 0, 5 do
-            if entCause:GetItemInSlot(i) and entCause:GetItemInSlot(i):GetName() == "item_gang_gold" and entCause:GetItemInSlot(i):IsCooldownReady() then
-                entCause:AddExperience(20, 0, false, false)
-                Gold:AddGold(entCause, 10)
-                if damagingAbility then
-                    entCause:GetItemInSlot(i):StartCooldown(entCause:GetItemInSlot(i):GetCooldown(1))
-                end
-                entCause:GetItemInSlot(i):StartCooldown(1)
-            end
-        end
-    end
   end
 end
 
@@ -104,7 +91,6 @@ function GameMode:OnItemPickedUp(keys)
   elseif keys.HeroEntityIndex then
     unitEntity = EntIndexToHScript(keys.HeroEntityIndex)
   end
-
   local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local itemname = keys.itemname
@@ -208,7 +194,6 @@ function GameMode:OnTreeCut(keys)
   local treeX = keys.tree_x
   local treeY = keys.tree_y
   if math.random(0,9) < 4 then
-      print("ok")
       local banan = CreateItem("item_banana", nil, nil)
       banan = CreateItemOnPositionSync(Vector(treeX, treeY, 0), banan)
       banan:SetAbsOrigin(GetGroundPosition(Vector(treeX, treeY, o), banan))
@@ -223,8 +208,16 @@ function GameMode:OnRuneActivated (keys)
   local player = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
 
   local rune = keys.rune
-
-  BottleCheck(player, rune)
+  if rune == 5 then 
+    if GameRules:GetDOTATime(false,false) < 119 then
+      local exp = 240 - player:GetCurrentXP()
+      if exp > 0 then
+        player:AddExperience(exp, 0, false, true)
+      end
+    else
+      player:AddExperience(100.0, 0, false, true)
+    end
+  end
   --[[ Rune Can be one of the following types
   DOTA_RUNE_DOUBLEDAMAGE
   DOTA_RUNE_HASTE
@@ -397,3 +390,9 @@ function GameMode:OnPlayerChat(keys)
 
   local text = keys.text
 end
+
+function GameMode:On_dota_item_gifted(data)
+  print("[BAREBONES] dota_item_gifted")
+  PrintTable(data)
+end
+

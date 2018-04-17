@@ -1012,7 +1012,6 @@ function Containers:OrderFilter(order)
       return false
     end
   end
-  WhatToDoRunes(order)
   return ret
 end
 

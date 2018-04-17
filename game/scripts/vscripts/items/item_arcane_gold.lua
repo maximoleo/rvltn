@@ -35,6 +35,22 @@ function modifier_item_arcane_gold:OnCreated()
   self:StartIntervalThink(1)
 end
 
+
+function modifier_item_arcane_gold:DeclareFunctions()
+  return {
+    MODIFIER_PROPERTY_MANA_BONUS,
+    MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
+  }
+end
+
+function modifier_item_arcane_gold:GetModifierMoveSpeedBonus_Constant()
+  return self:GetAbility():GetSpecialValueFor('movespeed')
+end
+
+function modifier_item_arcane_gold:GetModifierManaBonus()
+  return self:GetAbility():GetSpecialValueFor('mana_stat')
+end
+
 if IsServer() then
   function modifier_item_arcane_gold:OnIntervalThink()
 	if not PlayerResource then
