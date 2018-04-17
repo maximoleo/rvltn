@@ -18,15 +18,18 @@
 	{
 		 // General
 	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT|DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT|DOTA_ABILITY_BEHAVIOR_AOE|DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
 	    "BaseClass"                 "item_datadriven"
 	    "ScriptFile"                "items/veil_of_corrosion.lua"
-	    
+	    "AbilityTextureName"		"veil_of_corrosion"
+	    "SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+
 	     // Stats
 	    //-------------------------------------------------------------------------------------------------------------
 		   "AbilityCooldown"         "16"
 		   "AbilityCastRange"        "1000"
-		   "AbilityCastPoint"        "0.0"
+		   "AbilityManaCost"		 "50"
+		   "AOEradius"				 "%debuff_radius"
 
 	     // Special  
 	    //-------------------------------------------------------------------------------------------------------------
@@ -77,15 +80,9 @@
 				"var_type"				"FIELD_INTEGER"
 				"armor_reduce"			"-5"
 			}			
-			"10"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"mana_cost"				"50"
-			}
-			
-		}
-
-		"Modifiers"
+		}	
+		
+	   		"Modifiers"
 	    {
 	    	"modifier_veil_of_corrosion"
 	    	{
@@ -108,7 +105,10 @@
 				"IsHidden"			"0"
 				"Duration"			"%debuff_duration"
 				"IsDebuff"          "1"
-				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+											
+				"EffectName"				"particles/items2_fx/veil_of_discord_debuff.vpcf"
+				"EffectAttachType"			"follow_origin"
+
 
 				"Properties"
 				{
@@ -118,6 +118,27 @@
 		}
 		"OnSpellStart"
 		{
+			"FireSound"
+			{
+				"EffectName"			"DOTA_Item.EtherealBlade.Activate"
+				"Target"				"CASTER"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"DOTA_Item.VeilofDiscord.Activate"
+				"Target"				"CASTER"
+			}
+			"FireEffect"
+			{
+				"TargetPoint"			"POINT"
+				"EffectName"			"particles/items2_fx/veil_of_discord.vpcf"
+				"EffectAttachType"		"world_origin"
+				"ControlPoints"
+				{
+					"01"				"%debuff_radius %debuff_radius %debuff_radius"
+				}
+			}
 			"ActOnTargets"
 			{
 				"Target"

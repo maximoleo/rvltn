@@ -104,6 +104,7 @@
     "item"    "item_guardian_greaves"
     "item"    "item_medallion_of_courage"
     "item"    "item_arcane_boots"
+    "item"    "item_arcane_gold"
     //"item"    "item_arcane_boots2"
     "item"    "item_ancient_janggo"
     "item"    "item_vladmir"  
@@ -117,7 +118,8 @@
     "item"    "item_necronomicon"
     "item"    "item_cyclone"
     "item"    "item_dagon"
-    "item"    "item_veil_of_discord"    
+    "item"    "item_veil_of_discord"
+    "item"    "item_veil_of_corrosion"    
     "item"    "item_rod_of_atos"
     "item"    "item_ultimate_scepter"
     "item"    "item_octarine_core"
@@ -155,6 +157,7 @@
     "item"    "item_basher" 
     "item"    "item_invis_sword"
     "item"    "item_bfury"
+    "item"    "item_bow"
     "item"    "item_silver_edge"
     "item"    "item_ethereal_blade"
     "item"    "item_radiance"
@@ -163,9 +166,8 @@
     "item"    "item_butterfly"
     "item"    "item_rapier"
     "item"    "item_abyssal_blade"  
-    "item"    "item_bow"
     "item"    "item_bow_2"
-    "item"    "item_sange_and_yasha_and_kaya"
+    
           
   }
     
@@ -182,10 +184,12 @@
     "item"    "item_desolator"
     "item"    "item_heavens_halberd"
     "item"    "item_sange_and_yasha"
+    "item"    "item_sange_and_yasha_and_kaya"
     "item"    "item_mjollnir"
     "item"    "item_skadi" 
     "item"    "item_satanic"  
     "item"    "item_silver_alebard"
+    "item"    "item_battle_fury_big"
   }
 
   "sideshop1"
