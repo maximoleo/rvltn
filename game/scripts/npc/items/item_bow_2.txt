@@ -86,7 +86,7 @@
 	        "12"
 	      	{
 	       		"var_type"						"FIELD_INTEGER"
-	        	"damage_percent"    			"50"
+	        	"damage_percent"    			"40"
 	      	}
 	      	"13"
 	      	{
@@ -141,8 +141,8 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"items/item_battle_fury_big.lua"
-						"Function"		"attack"
+						"ScriptFile"	"items/item_sange_and_yasha_and_kaya.lua"
+						"Function"		"maim_attack"
 					}
 				}
 			}

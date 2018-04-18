@@ -1,0 +1,70 @@
+"DOTAItems"
+{
+    "item_recipe_tranquil_gold"
+  {
+    "Model"                                               "models/props_gameplay/recipe.mdl"
+    "AbilityTextureName"                                  "item_recipe"
+    "ItemCost"                                            "100"
+    "ItemShopTags"                                        ""
+    "ItemRecipe"                              "1"
+    "ItemResult"                              "item_tranquil_gold"
+    "ItemRequirements"
+    {
+      "01"                                    "item_tranquil_boots;item_gang_gold"
+    }
+  }
+ "item_tranquil_gold"
+  {
+    // General
+    //------------------------------------------------------------------------------------------------
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "Model"                     "models/props_gameplay/banana_prop_closed"
+    "BaseClass"                 "item_lua"
+    "ScriptFile"                "items/item_tranquil_gold.lua"
+    "AbilityTextureName"        "tranquil_gold" 
+    // Stats
+    //------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "13.0"
+    "AbilityManaCost"                                     "0"
+
+    // Item Info
+    //------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "1050"
+    "ItemShopTags"                                        "move_speed;regen_health;armor"
+    "ItemQuality"                                         "rare"
+    "ItemAliases"                                         "tranquil boots"
+    "ItemHideCharges"                                     "1"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_SPECTATORS"
+       
+    // Special
+    //------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                             "FIELD_INTEGER"           
+        "bonus_movement_speed"                 "90"           
+      }
+      "02"
+      {
+        "var_type"                             "FIELD_INTEGER"           
+        "broken_movement_speed"                "65"            
+      }
+      "03"
+      {
+        "var_type"                             "FIELD_INTEGER"             
+        "bonus_health_regen"                         "13"          
+      }
+      "04"
+      {
+        "var_type"                            "FIELD_INTEGER"
+        "break_time"                          "13"
+      }
+      "05"
+      {
+       "var_type"                             "FIELD_INTEGER"
+       "inc_gpm"                              "100"
+      }
+    }
+  }
+}

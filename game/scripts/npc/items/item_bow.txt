@@ -13,7 +13,7 @@
 	    {
 	        "01"           "item_ogre_axe;item_staff_of_wizardry;item_blade_of_alacrity;item_wraith_band;item_null_talisman;item_bracer"
 	    }
-  }
+    }
 
   "item_bow"
   	{	

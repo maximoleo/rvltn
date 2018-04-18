@@ -1,0 +1,134 @@
+"DOTAItems"
+{
+	"item_recipe_refresher_core"
+	{
+		"BaseClass"						"item_datadriven"
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"AbilityTextureName"			"item_recipe"
+		"ItemCost"						"100"
+		"ItemShopTags"					""
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_refresher_core"
+		"ItemRequirements"
+		{
+			"01"						"item_refresher;item_octarine_core"
+		}
+	}
+	"item_refresher_core"
+	{
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"refresher_core"
+		"AbilitySharedCooldown"			"item_refresher"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"mana;mb;octarine core"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"AbilityCastPoint"				"0.0"
+		"AbilityManaCost"				"225"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"35"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intelligence"	"30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"550"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"525"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen"	"30"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen"		"5"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cooldown_min"			"90"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cooldown_max"			"150"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_cooldown_pct"	"25"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"hero_lifesteal"		"30"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"creep_lifesteal"		"10"
+			}
+		}
+
+		"precache"
+		{
+			"particle"				"particles/items2_fx/refresher.vpcf"
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_refresher_core.lua"
+				"Function"			"Refresh"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_item_refresher_core"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"				"%bonus_health"
+					"MODIFIER_PROPERTY_EXTRA_MANA_BONUS"			"%bonus_mana"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%bonus_health_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%bonus_mana_regen"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+				}
+			}
+			"modifier_octarine_unique_cooldown_reduction"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE"			"%bonus_cooldown_pct"
+				}
+			}
+		}
+	}
+}

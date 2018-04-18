@@ -58,7 +58,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"cleave_percent"	    "60"
+				"cleave_percent"	    "40"
 			}
 			"05"
 			{

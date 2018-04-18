@@ -1,0 +1,189 @@
+"lang"
+{
+	"Language"		"Russian"
+	"Tokens"
+	{		
+		"game_mode_15"				"BAREBONES"
+		"addon_game_name"			"BAREBONES"
+		
+		//"DOTA_Basics"							"ABILITIES"
+		//"DOTA_Upgrades"							"ITEMS"
+		//"DOTA_Shop_Category_Basics"				"ABILITIES"
+		//"DOTA_Shop_Category_Upgrades"			"ITEMS"
+
+	    //------------------------
+	    // Veil of Discord
+	    //------------------------
+	    "DOTA_Tooltip_ability_item_veil_of_corrosion" 						"Veil of Corrosion"	
+	    "DOTA_Tooltip_ability_item_veil_of_corrosion_Description" 			
+	    "<h1>Активируемая: Armor Breaking</h1> Ослабляет врагов в области радиусом %debuff_radius%, уменьшая их броню на %armor_reduce%.<br><br>Дальность применения: %cast_range%<br>Длительность: %debuff_duration% сек."
+	    "DOTA_Tooltip_VeilReduction" 										"Armor Breaking"
+	    "DOTA_Tooltip_VeilReduction_Description"							"Броня снижена"
+	    "DOTA_Tooltip_ability_item_veil_of_corrosion_bonus_strengt" 		"+$str"
+		"DOTA_Tooltip_ability_item_veil_of_corrosion_bonus_agility"			"+$agi"
+		"DOTA_Tooltip_ability_item_veil_of_corrosion_bonus_intillegent"		"+$int"
+		"DOTA_Tooltip_ability_item_veil_of_corrosion_bonus_armor"    		"+$armor"
+	 	"DOTA_Tooltip_ability_item_veil_of_corrosion_health_reneg"			"+$hp_regen"
+	 	"DOTA_Tooltip_ability_item_veil_of_corrosion_Lore" 					"Мой первый предмет"
+
+
+	 	//------------------------
+		// Bow
+		//------------------------
+		 "DOTA_Tooltip_ability_item_bow" 									"Bow"
+		 "DOTA_Tooltip_ability_item_bow_Description" 						
+		 "<h1>Пассивная: Attack Split</h1> Наносит %damage_percent%%  от урона героя в радиусе %range% вокруг цели атаки. Не работает на героях ближнего боя."
+		 "DOTA_Tooltip_ability_item_bow_bonus_damage" 						"+$damage"
+		 "DOTA_Tooltip_ability_item_bow_bonus_all" 							"+$all"
+		//------------------------
+		// Bow 2
+		//------------------------
+			 "DOTA_Tooltip_ability_item_bow_2"									"Bow of Artemis"
+			 "DOTA_Tooltip_ability_item_bow_2_Description"					    
+			 "<h1>Пассивная: Attack Split</h1> Наносит %damage_percent%%  от урона героя в радиусе  %range% вокруг цели атаки. Не работает на героях ближнего боя.
+			 <h1>Пассивная: Greater Maim</h1>Каждая атака с вероятностью в %maim_chance%%% может нанести травму, замедляющую врага в зависимости от типа атаки владельца.<br><br>Длительность травмы: %maim_duration%<br>Замедление (ближний бой):<br>• Передвижение: %maim_slow_movement%% <br>• Атака: %maim_slow_attack%<br>Замедление (дальний бой):<br>• Передвижение: %maim_slow_movement_range%%%<br>• Атака: %maim_slow_attack_range%"
+			 "DOTA_Tooltip_ability_item_bow_2_bonus_damage"						"+$damage"
+			 "DOTA_Tooltip_ability_item_bow_2_bonus_all"						"+$all"
+			 "DOTA_Tooltip_ability_item_bow_2_bonus_attack_speed"				"+$attack"
+			 "DOTA_Tooltip_ability_item_bow_2_bonus_movement_speed"				"%+$move_speed"
+			 "DOTA_Tooltip_ability_item_bow_2_spell_amp"					"%+Увеличение урона от способностей"
+			 "DOTA_Tooltip_ability_item_bow_2_manacost_reduction"			"%+Уменьшение потери маны"
+	 	
+	 	//------------------------
+	 	// Silver Halberd
+	 	//------------------------
+	 	  "DOTA_Tooltip_ability_item_silver_alebard"								"Silver Alebard"		
+	 	  "DOTA_Tooltip_ability_item_silver_alebard_Description"					
+	 	   "<h1>Активируемая: Shadow Walk</h1>Делает героя невидимым на %windwalk_duration% сек. или до момента, когда он совершит атаку или применит способность. Эффект также увеличивает скорость передвижения на %windwalk_movement_speed%%  и позволяет проходить сквозь существ. <br><br>Атака, прерывающая невидимость, дополнительно нанесёт %windwalk_bonus_damage% физического урона и отключит пассивные способности жертвы и обезоруживает противника. Длительность эффекта: %silver_alebard_duration% сек.
+	 	  <h1>Пассивная: Lesser maim</h1>Каждая атака с вероятностью в %maim_chance%%  может нанести травму, замедляющую врага в зависимости от типа атаки владельца.<br><br>Длительность травмы: %maim_duration%<br>Замедление (ближний бой):<br>• Передвижение: %maim_slow_movement%% <br>• Атака: %maim_slow_attack%<br>Замедление (дальний бой):<br>• Передвижение: %maim_slow_movement_range%% <br>• Атака: %maim_slow_attack_range%"
+		  "DOTA_Tooltip_ability_item_silver_alebard_note0"                        "Ударом из невидимости нельзя промахнуться."
+		  	"DOTA_Tooltip_ability_item_silver_alebard_bonus_attack_speed"				 "+$attack"
+	   	 	"DOTA_Tooltip_ability_item_silver_alebard_bonus_damage"				"+$damage"	
+	   	 	"DOTA_Tooltip_ability_item_silver_alebard_bonus_all"					"+$all"
+	 	  	"DOTA_Tooltip_ability_item_silver_alebard_bonus_evasion"				"%+$evasion"	
+	 	  	"DOTA_Tooltip_modifier_item_silver_alebard_active"					"Shadow Walk"
+	 	  	"DOTA_Tooltip_modifier_item_silver_alebard_debuff"					"UselessTrash"
+	 	  	"DOTA_Tooltip_modifier_item_silver_alebard_debuff_Description"		"Ты бесполезен,смирись"
+
+	 	 
+
+	 	//------------------------	
+	 	// Battle Fury Big
+	 	//------------------------
+	 	"DOTA_Tooltip_ability_item_battle_fury_big"						"Battle Fury Big"
+	 	"DOTA_Tooltip_ability_item_battle_fury_big_Description" 	 
+	 	"<h1>Активируемая: Chop Tree/Ward</h1> Уничтожает выбранное дерево или вард.<br><br>Дальность применения:<br>• На дерево: %cast_range_tooltip%<br>• На вард: %cast_range_ward%\\n<h1>Пассивная: Quell</h1> Увеличивает урон от атак по существам, не являющимися героями, на %quelling_bonus%%  для героев ближнего боя и на %quelling_bonus_ranged%%  — для дальнего. \\n<h1>Пассивная: Cleave</h1> Наносит физический урон, равный %cleave_percent%%  урона от атак, всем врагам вокруг основной цели (только в ближнем бою).
+	 	 <h1>Пассивная: Greater Maim</h1>Каждая атака с вероятностью в %maim_chance%%% может нанести травму, замедляющую врага в зависимости от типа атаки владельца.<br><br>Длительность травмы: %maim_duration%<br>Замедление (ближний бой):<br>• Передвижение: %maim_slow_movement%% <br>• Атака: %maim_slow_attack%<br>Замедление (дальний бой):<br>• Передвижение: %maim_slow_movement_range%%%<br>• Атака: %maim_slow_attack_range%"
+	 	"DOTA_Tooltip_ability_item_battle_fury_big_bonus_damage"				"+$damage"
+	 	"DOTA_Tooltip_ability_item_battle_fury_big_bonus_all"					"+$all"
+	 	"DOTA_Tooltip_ability_item_battle_fury_big_bonus_attack_speed"			"+$attack"		
+	 	"DOTA_Tooltip_ability_item_battle_fury_big_bonus_health_regen"			"+$hp_regen"
+	 	"DOTA_Tooltip_ability_item_battle_fury_big_bonus_mana_regen"			"+$mana_regen"
+	 	"DOTA_Tooltip_ability_item_battle_fury_big_bonus_movement_speed"		"%+$move_speed"
+ 		"DOTA_Tooltip_ability_item_battle_fury_big_spell_amp"					"%+Увеличение урона от способностей"
+ 		"DOTA_Tooltip_ability_item_battle_fury_big_manacost_reduction"			"%+Уменьшение потери маны"
+
+	 	//------------------------	
+	 	// Sange and Yasha and Kaya
+	 	//------------------------ 						
+	 	"DOTA_Tooltip_ability_item_sange_and_yasha_and_kaya"    			"Sange and Yasha and Kaya"
+		"DOTA_Tooltip_ability_item_sange_and_yasha_and_kaya_Description" 				
+		"<h1>Пассивная: Greater Maim</h1>Каждая атака с вероятностью в %maim_chance%%% может нанести травму, замедляющую врага в зависимости от типа атаки владельца.<br><br>Длительность травмы: %maim_duration%<br>Замедление (ближний бой):<br>• Передвижение: %maim_slow_movement%% <br>• Атака: %maim_slow_attack%<br>Замедление (дальний бой):<br>• Передвижение: %maim_slow_movement_range%%%<br>• Атака: %maim_slow_attack_range%."
+		"DOTA_Tooltip_ability_item_sange_and_yasha_and_kaya_bonus_damage"			"+$damage"
+		"DOTA_Tooltip_ability_item_sange_and_yasha_and_kaya_bonus_all"				"+$all"
+		"DOTA_Tooltip_ability_item_sange_and_yasha_and_kaya_bonus_attack_speed"		"+$attack"
+		"DOTA_Tooltip_ability_item_sange_and_yasha_and_kaya_bonus_movement_speed"	"%+$move_speed"
+		"DOTA_Tooltip_ability_item_sange_and_yasha_and_kaya_spell_amp"					"%+Увеличение урона от способностей"
+		"DOTA_Tooltip_ability_item_sange_and_yasha_and_kaya_manacost_reduction"			"%+Уменьшение потери маны"
+
+		//------------------------	
+	 	// Sange and Kaya
+	 	//------------------------ 
+	 	"DOTA_Tooltip_ability_item_sange_and_kaya"    			"Sange and Kaya"
+		"DOTA_Tooltip_ability_item_sange_and_kaya_Description" 				
+		"<h1>Пассивная: Lesser maim</h1>Каждая атака с вероятностью в %maim_chance%%  может нанести травму, замедляющую врага в зависимости от типа атаки владельца.<br><br>Длительность травмы: %maim_duration%<br>Замедление (ближний бой):<br>• Передвижение: %maim_slow_movement%% <br>• Атака: %maim_slow_attack%<br>Замедление (дальний бой):<br>• Передвижение: %maim_slow_movement_range%% <br>• Атака: %maim_slow_attack_range%."
+		"DOTA_Tooltip_ability_item_sange_and_kaya_bonus_damage"					"+$damage"
+		"DOTA_Tooltip_ability_item_sange_and_kaya_bonus_intellect"				"+$int"
+		"DOTA_Tooltip_ability_item_sange_and_kaya_bonus_strength"				"+$str"
+		"DOTA_Tooltip_ability_item_sange_and_kaya_spell_amp"					"%+Увеличение урона от способностей"
+		"DOTA_Tooltip_ability_item_sange_and_kaya_manacost_reduction"			"%+Уменьшение потери маны"
+
+
+		//------------------------	
+	 	// Kaya and Yasha
+	 	//------------------------ 						
+	 	"DOTA_Tooltip_ability_item_kaya_and_yasha"    						"Kaya and Yasha"
+		"DOTA_Tooltip_ability_item_kaya_and_yasha_bonus_agility"			"+$agi"
+		"DOTA_Tooltip_ability_item_kaya_and_yasha_bonus_attack_speed"		"+$attack"
+		"DOTA_Tooltip_ability_item_kaya_and_yasha_bonus_movement_speed"		"%+$move_speed"
+		"DOTA_Tooltip_ability_item_kaya_and_yasha_bonus_intellect"			"+$int"
+		"DOTA_Tooltip_ability_item_kaya_and_yasha_spell_amp"					"%+Увеличение урона от способностей"
+		"DOTA_Tooltip_ability_item_kaya_and_yasha_manacost_reduction"			"%+Уменьшение потери маны"
+
+		
+		//------------------------	
+	 	// Arcane Gold
+	 	//------------------------ 	
+	 	"DOTA_Tooltip_ability_item_arcane_gold"					"Arcane Gold"
+		"DOTA_Tooltip_ability_item_arcane_gold_Description" 	
+		"<h1>Активируемая: Replenish Mana</h1> Восстанавливает %mana% маны всем союзникам вокруг.<br><br>Радиус: %radius%\\n<h1>Пассивная: Greed</h1> Увеличивает прирост золота в минуту на %inc_gpm%.\\nОсновные бонусы к скорости передвижения от нескольких пар ботинок не складываются."	
+		"DOTA_Tooltip_ability_item_arcane_gold_movespeed"			"+$move_speed"
+		"DOTA_Tooltip_ability_item_arcane_gold_mana_stat"			"+$mana"
+
+		//------------------------	
+	 	// Gang Gold
+	 	//------------------------ 	
+		"DOTA_Tooltip_ability_item_gang_gold"                        "Gang GOLD"
+		"DOTA_Tooltip_ability_item_gang_gold_Description"
+		"<h1>Пассивная: Golden Touch</h1> За каждый урор по вражескому герою вы получаете золото и опыт.<br> Герои ближнего боя:<br>•Золото: %gph_meele%<br>•Опыт: %eph%<br>Герои дальнего боя:<br>•Золото: %gph_ranged%<br>•Опыт: %eph_ranged%"
+		//------------------------	
+	 	// Banana
+	 	//------------------------ 	
+	 	"DOTA_Tooltip_ability_item_banana"							"Banana"
+		"DOTA_Tooltip_ability_item_banana_Description"				
+		"<h1>Активируемая: Использовать</h1> Использует банан и увеличивает интеллект вашего персонажа на %bonus_int% и восстанавливает %mana_restore% маны."
+		//------------------------	
+	 	// Refresher Core
+	 	//------------------------ 		
+		"DOTA_Tooltip_ability_item_refresher_core" 					"Refresher Core"
+		"DOTA_Tooltip_ability_item_refresher_core_Description"
+	    "<h1>Активируемая: Reset Cooldowns</h1> Сбрасывает время перезарядки всех ваших предметов и способностей.
+  		 <h1>Пассивная: Dynamical Cooldown</h1> Время перезарядки Refresher Orb равно времени перезарядки вашей способности с наибольшим временем перезарядки. Время перезарядки не может быть менее %cooldown_min% секунд и более %cooldown_max% секунд.
+  		 <h1>Пассивная: Cooldown Reduction</h1> Уменьшает время перезарядки всех способностей и предметов на %bonus_cooldown_pct%%%.
+ 		 <h1>Пассивная: Spell Lifesteal</h1> Дает магический вампиризм, который восстанавливает здоровье в размере доли от нанесенного способностями урона."
+		"DOTA_Tooltip_ability_item_refresher_core_bonus_damage" 					"+$damage"
+		"DOTA_Tooltip_ability_item_refresher_core_bonus_intelligence" 				"+$int"
+		"DOTA_Tooltip_ability_item_refresher_core_bonus_health" 					"+$health"
+		"DOTA_Tooltip_ability_item_refresher_core_bonus_mana" 						"+$mana"
+		"DOTA_Tooltip_ability_item_refresher_core_bonus_health_regen" 				"+$hp_regen"
+		"DOTA_Tooltip_ability_item_refresher_core_bonus_mana_regen_pct" 			"+$mana_regen"
+		"DOTA_Tooltip_ability_item_refresher_core_hero_lifesteal" 					"%ВАМПИРИЗМ ОТ ГЕРОЕВ:"
+		"DOTA_Tooltip_ability_item_refresher_core_creep_lifesteal" 					"%ВАМПИРИЗМ ОТ ГЕРОЕВ:"
+		//================================================================================
+		// Tranquil Gold
+		//================================================================================
+
+		"DOTA_Tooltip_Ability_item_tranquil_gold"                              "Tranquil Gold"
+		"DOTA_Tooltip_Ability_item_tranquil_gold_Description"                  
+		"<h1>Пассивная: Break</h1> Если владельца атаковали или он атаковал сам, то предмет на %break_time% потеряет бонус к восстановлению здоровья, а бонус к скорости передвижения уменьшится на %broken_movement_speed%.
+		<h1>Пассивная	: Greed</h1> Увеличивает прирост золота в минуту на %inc_gpm%.\\nОсновные бонусы к скорости передвижения от нескольких пар ботинок не складываются."
+		"DOTA_Tooltip_Ability_item_tranquil_gold_Lore"                         "These boots give the wearer the Ability to use a dying enemy's life energy."
+		"DOTA_Tooltip_Ability_item_tranquil_gold_bonus_movement_speed"         "+$move_speed"
+		"DOTA_Tooltip_Ability_item_tranquil_gold_bonus_health_regen"           "+$hp_regen"
+		
+		//=====================================================================================
+		// Pull Staff
+		//=====================================================================================
+
+		"DOTA_Tooltip_Ability_item_pull_staff"                                  "Pull Staff"
+		"DOTA_Tooltip_Ability_item_recipe_pull_staff"                           "Pull Staff Recipe"
+		"DOTA_Tooltip_Ability_item_pull_staff_Description"                      "<h1>Активируемая: Pull</h1> Pulls any target unit towards you.<br><br>Range: %tooltip_range%"
+		"DOTA_Tooltip_Ability_item_pull_staff_Lore"                             "A Keen Folk invention, used in hunting to pull-in fleeing animals and prey"
+		"DOTA_Tooltip_Ability_item_pull_staff_Note0"                            "Pull Staff doesn't interrupt the target's actions."
+		"DOTA_Tooltip_Ability_item_pull_staff_bonus_intellect"                  "+$int"
+		"DOTA_Tooltip_Ability_item_pull_staff_bonus_health_regen"               "+$hp_regen"
+		//"DOTA_Tooltip_Ability_item_pull_staff_bonus_pull_length"                "+PULL LENGTH:"
+	}	
+}
+
+

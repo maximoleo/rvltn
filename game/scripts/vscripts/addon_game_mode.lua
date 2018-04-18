@@ -54,6 +54,11 @@ function Precache( context )
   PrecacheItemByNameSync("item_arcane_gold", context)
   PrecacheItemByNameSync("item_battle_fury_big", context)
   PrecacheItemByNameSync("item_veil_of_corrosion", context)
+  PrecacheItemByNameSync("item_ring_of_immolation", context)
+  PrecacheItemByNameSync("item_refresher_core", context)
+  PrecacheItemByNameSync("item_tranquil_gold", context)
+  PrecacheItemByNameSync("item_pull_staff", context)
+  
 
   -- Entire heroes (sound effects/voice/models/particles) can be precached with PrecacheUnitByNameSync
   -- Custom units from npc_units_custom.txt can also have all of their abilities and precache{} blocks precached in this way

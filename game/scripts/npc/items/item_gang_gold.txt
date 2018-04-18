@@ -33,6 +33,11 @@
 	        		"var_type"			"FIELD_FLOAT"
 	        		"eph"	         	"10"
 	        	}
+	        	"04"
+	        	{
+	        		"var_type"			"FIELD_FLOAT"
+	        		"eph_ranged"	         	"8"
+	        	}
 	        }
 	        "Modifiers"
 	        {

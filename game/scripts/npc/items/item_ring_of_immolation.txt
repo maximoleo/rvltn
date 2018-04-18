@@ -1,0 +1,72 @@
+"DOTAItems"
+{
+	"item_recipe_ring_of_immolation"
+    {
+    	"BaseClass"           "item_datadriven"
+	    "Model"               "models/props_gameplay/recipe.mdl"
+	    "AbilityTextureName"  "item_recipe"
+	    "ItemCost"            "500"
+	    "ItemShopTags"        ""
+	    "ItemRecipe"          "1"
+	    "ItemResult"          "item_ring_of_immolation"
+	    "ItemRequirements"
+	    {
+	        "01"           "item_ring_of_protection;item_ring_of_regen;item_circlet"
+	    }
+	}
+	"item_ring_of_immolation"
+	{
+		 // General
+	    //---------------------------------------------------------------------------------------------
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "BaseClass"                 "item_datadriven"
+	    "AbilityTextureName"			"ring_of_immolation"
+	    "ItemQuality"        		 "legendary"
+	    "ItemDeclarations"   		 "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+
+	     // Special
+	    //---------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	      "01"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "outgoing_damage_multiplier"    "300"
+	      }
+	      "02"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "damage_multiplier"           "250"
+	      }
+	      "03"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "bonus_all"       "5"
+	      }
+	      "04"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "bonus_armor"      "5"
+	      }
+	    }
+	    "Modifiers"
+	    {
+	    "modifier_ring_of_immolation"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_all"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_all"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_all"
+					"MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE"	"%outgoing_damage_multiplier"
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%damage_multiplier"
+				}
+			}	
+	    }
+	}
+}	    

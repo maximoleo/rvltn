@@ -100,6 +100,7 @@
     "item"    "item_ring_of_aquila" 
     //"item"    "item_iron_talon" 
     "item"    "item_tranquil_boots"
+     "item"   "item_tranquil_gold"
     //"item"    "item_nightfall_striders"
     "item"    "item_guardian_greaves"
     "item"    "item_medallion_of_courage"
@@ -130,6 +131,7 @@
     "item"    "item_refresher"
     "item"    "item_sheepstick"
     "item"    "item_glimmer_cape"
+    "item"    "item_refresher_core"
   }
     
   // Level 3 - Purple Recipes 
