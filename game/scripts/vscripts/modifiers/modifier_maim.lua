@@ -6,9 +6,9 @@ modifier_maim = class({
 function modifier_maim:GetTexture ()
 	if self:GetAbility() then 
 		self.last = self:GetAbility():GetName()
-		return self:GetAbility():GetName() 
+		return "custom/".. self:GetAbility():GetName() 
 	else
-		return self.last
+		return "custom/".. self.last
 	end
 end
 

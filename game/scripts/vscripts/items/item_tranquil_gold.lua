@@ -8,9 +8,9 @@ end
 
 function item_tranquil_gold:GetTexture()
     if self.mod:IsCooldownReady() then
-      return "item_tranquil_gold_ready"
+      return "custom/item_tranquil_gold_ready"
     else
-        return "item_tranquil_gold_inactive"
+        return "custom/item_tranquil_gold_inactive"
     end
 end
 
