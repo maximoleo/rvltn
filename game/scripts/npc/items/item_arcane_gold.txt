@@ -22,7 +22,7 @@
 	    "Model"						"models/props_gameplay/banana_prop_closed"
 	    "BaseClass"                 "item_lua"
 	    "ScriptFile"                "items/item_arcane_gold.lua"
-	    "AbilityTextureName"        "item_arcane_gold" 
+	    "AbilityTextureName"        "custom/item_arcane_gold" 
 
 	    // Item Info
 	    //-----------------------------------------------------------------------------------------

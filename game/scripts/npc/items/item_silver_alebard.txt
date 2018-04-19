@@ -22,7 +22,7 @@
 	    "ItemQuality"         		"legendary"
 	    "ItemDeclarations"    		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
 	    "ScriptFile"                "item_silver_alebard.lua"
-	    "AbilityTextureName"        "item_silver_alebard"
+	    "AbilityTextureName"        "custom/item_silver_alebard"
 		"AbilityCooldown"				"22.0"
 		"AbilitySharedCooldown"			"shadow_blade"
 	    // Special

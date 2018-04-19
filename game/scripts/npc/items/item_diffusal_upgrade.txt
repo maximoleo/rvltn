@@ -25,7 +25,7 @@
     "item_diffusal_upgrade"
     {
         "BaseClass"                                           "item_datadriven"
-        "AbilityTextureName"                                  "item_diffusal_upgrade"
+        "AbilityTextureName"                                  "custom/item_diffusal_upgrade"
 
         "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
         "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH | DOTA_UNIT_TARGET_TEAM_CUSTOM"

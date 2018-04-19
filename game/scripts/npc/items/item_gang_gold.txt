@@ -7,7 +7,7 @@
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "BaseClass"                 "item_datadriven"
 	    "ScriptFile"                "items/gang_gold.lua"
-	    "AbilityTextureName"        "item_gang_gold" 
+	    "AbilityTextureName"        "custom/item_gang_gold" 
 
 	    // Item Info
 	    //-------------------------------------------------------------------------------------------------------------

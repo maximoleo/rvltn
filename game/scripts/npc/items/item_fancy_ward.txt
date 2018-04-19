@@ -19,7 +19,7 @@
   	{	
 	    "BaseClass"           		"item_datadriven"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"	 
-  	    "AbilityTextureName"         "item_fancy_ward"
+  	    "AbilityTextureName"         "custom/item_fancy_ward"
 	    "ItemQuality"         		"legendary"
 	    "ItemDeclarations"    		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
 	    "ScriptFile"                "item_fancy_ward.lua"

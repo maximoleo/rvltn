@@ -18,7 +18,7 @@
 	{
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"item_refresher_core"
+		"AbilityTextureName"			"custom/item_refresher_core"
 		"AbilitySharedCooldown"			"item_refresher"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"mana;mb;octarine core"
