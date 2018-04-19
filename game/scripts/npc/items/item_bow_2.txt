@@ -24,7 +24,7 @@
 		"BaseClass"						"item_datadriven"
 		"ScriptFile"					"items/item_bow"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"bow_2"
+		"AbilityTextureName"			"item_bow_2"
 
 		"AbilitySpecial"
 		{

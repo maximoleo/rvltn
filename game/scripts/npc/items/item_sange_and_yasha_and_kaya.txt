@@ -21,7 +21,7 @@
 	{
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"            "kys"
+		"AbilityTextureName"            "item_sange_and_yasha_and_kaya"
 	    "ItemDeclarations"    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
 
 		"AbilitySpecial"

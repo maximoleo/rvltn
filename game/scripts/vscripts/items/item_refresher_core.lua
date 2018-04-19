@@ -1,19 +1,24 @@
+ItemsExeptions = 
+{
+	item_refresher = 1,
+	item_refresher_core = 1,
+
+}
+
 function Refresh(keys)
-	local caster = keys.caster
-	local ability = keys.ability
-	if not caster:IsTempestDouble() then
-				for i = 0, 23 do
-		    if caster:GetAbilityByIndex(i) then
-		        caster:GetAbilityByIndex(i):EndCooldown()
+	if not keys.caster:IsTempestDouble() then
+		for i = 0, 23 do
+		    if keys.caster:GetAbilityByIndex(i) then
+		        keys.caster:GetAbilityByIndex(i):EndCooldown()
 		    end
 		end
-				for i = 0, 5 do
-		    if caster:GetItemInSlot(i) then
-		        caster:GetItemInSlot(i):EndCooldown()
+		for i = 0, 5 do
+		    if keys.caster:GetItemInSlot(i) and keys.caster:GetItemInSlot(i):IsRefreshable() then 
+		        keys.caster:GetItemInSlot(i):EndCooldown()
 		    end
 		end
-		caster:EmitSound("DOTA_Item.Refresher.Activate")
-		ParticleManager:SetParticleControlEnt(ParticleManager:CreateParticle("particles/items2_fx/refresher.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster), 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
-		ability:StartCooldown(math.min(math.max(table.highest(GetAllAbilitiesCooldowns(caster)), ability:GetSpecialValueFor("cooldown_min")), ability:GetSpecialValueFor("cooldown_max")))
+		keys.caster:EmitSound("DOTA_Item.Refresher.Activate")
+		ParticleManager:SetParticleControlEnt(ParticleManager:CreateParticle("particles/items2_fx/refresher.vpcf", PATTACH_ABSORIGIN_FOLLOW, keys.caster), 0, keys.caster, PATTACH_POINT_FOLLOW, "attach_hitloc", keys.caster:GetAbsOrigin(), true)
+		keys.ability:StartCooldown(math.random(keys.ability:GetSpecialValueFor("cooldown_min"), keys.ability:GetSpecialValueFor("cooldown_max")))
 	end
 end

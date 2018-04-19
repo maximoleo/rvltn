@@ -21,7 +21,7 @@
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT|DOTA_ABILITY_BEHAVIOR_AOE|DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
 	    "BaseClass"                 "item_datadriven"
 	    "ScriptFile"                "items/veil_of_corrosion.lua"
-	    "AbilityTextureName"		"veil_of_corrosion"
+	    "AbilityTextureName"		"item_veil_of_corrosion"
 	    "SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 
 	     // Stats

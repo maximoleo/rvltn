@@ -19,7 +19,7 @@
   	{	
 	    "BaseClass"           "item_datadriven"
 	    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityTextureName"  "bow"
+	    "AbilityTextureName"  "item_bow"
 	    "ItemQuality"         "legendary"
 	    "ItemDeclarations"    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
 

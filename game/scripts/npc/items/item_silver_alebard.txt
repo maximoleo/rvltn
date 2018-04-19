@@ -18,11 +18,11 @@
   "item_silver_alebard"
   	{	
 	    "BaseClass"           		"item_datadriven"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"	    "AbilityTextureName"  "silver_alebard"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 	    "ItemQuality"         		"legendary"
 	    "ItemDeclarations"    		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
 	    "ScriptFile"                "item_silver_alebard.lua"
-	    "AbilityTextureName"        "silver_alebard"
+	    "AbilityTextureName"        "item_silver_alebard"
 		"AbilityCooldown"				"22.0"
 		"AbilitySharedCooldown"			"shadow_blade"
 	    // Special

@@ -1,47 +1,47 @@
 "DOTAItems"
 {
     "item_banana"
-  	  {
-		   // General
-		    //-------------------------------------------------------------------------------------------------------------
-		    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET|DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
-		    "Model"						"models/props_gameplay/banana_prop_closed"
-		    "BaseClass"                 "item_datadriven"
-		    "ScriptFile"                "items/banana.lua"
-		    "AbilityTextureName"        "banana" 
+  	{
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET|DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+	    "Model"						"models/props_gameplay/banana_prop_closed"
+	    "BaseClass"                 "item_datadriven"
+	    "ScriptFile"                "items/banana.lua"
+	    "AbilityTextureName"        "banana" 
 
-		    // Item Info
-		    //-------------------------------------------------------------------------------------------------------------
-		    "ItemStackable"         "1"
-		    "ItemInitialCharges"    "1"
-	        "ItemShareability"        "ITEM_FULLY_SHAREABLE_STACKING"
+	    // Item Info
+	    //-------------------------------------------------------------------------------------------------------------
+	    "ItemStackable"         "1"
+	    "ItemInitialCharges"    "1"
+        "ItemShareability"        "ITEM_FULLY_SHAREABLE_STACKING"
 
 
-	        "AbilityCooldown"       "0.1"
-	         // Special  
-		    //-------------------------------------------------------------------------------------------------------------
-		    "AbilitySpecial"
-		    {
-		      "01"
-		      {
-		        "var_type"        "FIELD_INTEGER"
-		        "bonus_int"    		"3"
-		      }
-		      "02"
-		      {
-		        "var_type"        "FIELD_INTEGER"
-		        "mana_restore"      "40"
-		      }     
-		     
-		    }
-		  
-		    "OnSpellStart"
-		    {
-		    	"RunScript"
-		    	{
-		    		"ScriptFile"  "items/banana.lua"
-	        		"Function"    "AddBananaStats"
-		    	}
-		    }
-      }
+        "AbilityCooldown"       "0.1"
+         // Special  
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	      "01"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "bonus_int"    		"3"
+	      }
+	      "02"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "mana_restore"      "40"
+	      }     
+	     
+	    }
+	  
+	    "OnSpellStart"
+	    {
+	    	"RunScript"
+	    	{
+	    		"ScriptFile"  "items/banana.lua"
+        		"Function"    "AddBananaStats"
+	    	}
+	    }
+    }
 }

@@ -1,61 +1,61 @@
 "DOTAItems"
 {
     "item_gang_gold"
-  	  {
-		   // General
-		    //-------------------------------------------------------------------------------------------------------------
-		    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		    "BaseClass"                 "item_datadriven"
-		    "ScriptFile"                "items/gang_gold.lua"
-		    "AbilityTextureName"        "gang_gold" 
+  	{
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "BaseClass"                 "item_datadriven"
+	    "ScriptFile"                "items/gang_gold.lua"
+	    "AbilityTextureName"        "item_gang_gold" 
 
-		    // Item Info
-		    //-------------------------------------------------------------------------------------------------------------
-		    "ItemCost"              "300"
-		    "ItemShopTags"          "item_gang_gold"
-		    "ItemStackable"         "0"
-	        "AbilityCooldown"       "1.5"
+	    // Item Info
+	    //-------------------------------------------------------------------------------------------------------------
+	    "ItemCost"              "300"
+	    "ItemShopTags"          "item_gang_gold"
+	    "ItemStackable"         "0"
+        "AbilityCooldown"       "1.5"
 
-	        "AbilitySpecial"
-	        {
-	        	"01"
-	        	{
-	        		"var_type"			"FIELD_INTEGER"
-	        		"gph_meele"			"6"
-	        	}
-	        	"02"
-	        	{
-	        		"var_type"			"FIELD_FLOAT"
-	        		"gph_ranged"		"4"
-	        	}
-	           	"03"
-	        	{
-	        		"var_type"			"FIELD_FLOAT"
-	        		"eph"	         	"10"
-	        	}
-	        	"04"
-	        	{
-	        		"var_type"			"FIELD_FLOAT"
-	        		"eph_ranged"	         	"8"
-	        	}
-	        }
-	        "Modifiers"
-	        {
-	        	"modifier_item_gang_gold"
-	        	{
+        "AbilitySpecial"
+        {
+        	"01"
+        	{
+        		"var_type"			"FIELD_INTEGER"
+        		"gph_meele"			"6"
+        	}
+        	"02"
+        	{
+        		"var_type"			"FIELD_FLOAT"
+        		"gph_ranged"		"4"
+        	}
+           	"03"
+        	{
+        		"var_type"			"FIELD_FLOAT"
+        		"eph"	         	"10"
+        	}
+        	"04"
+        	{
+        		"var_type"			"FIELD_FLOAT"
+        		"eph_ranged"	         	"8"
+        	}
+        }
+        "Modifiers"
+        {
+        	"modifier_item_gang_gold"
+        	{
 
-		    		"Passive"			"1"
-					"IsHidden"			"1"
-			       	"OnAttackLanded"
-			       	// "%attack_damage" is set to the damage value before mitigation
-			       	{
-			       		"RunScript"
-			       		{
-			       			"ScriptFile"	"items/item_gang_gold"
-			       			"Function"		"gang_gold_attack"
-			       		}
-			       	}
+	    		"Passive"			"1"
+				"IsHidden"			"1"
+		       	"OnAttackLanded"
+		       	// "%attack_damage" is set to the damage value before mitigation
+		       	{
+		       		"RunScript"
+		       		{
+		       			"ScriptFile"	"items/item_gang_gold"
+		       			"Function"		"gang_gold_attack"
+		       		}
 		       	}
-		    }
-      }
+	       	}
+	    }
+    }
 }

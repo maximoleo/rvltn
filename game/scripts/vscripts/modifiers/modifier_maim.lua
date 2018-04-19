@@ -3,8 +3,13 @@ modifier_maim = class({
 		IsPurgable = function() return false end,
 	})
 
-function modifier_maim:GetTexture () 
-	return self:GetAbility():GetTexture() 
+function modifier_maim:GetTexture ()
+	if self:GetAbility() then 
+		self.last = self:GetAbility():GetName()
+		return self:GetAbility():GetName() 
+	else
+		return self.last
+	end
 end
 
 
@@ -16,17 +21,29 @@ function modifier_maim:DeclareFunctions()
 end
 
 function modifier_maim:GetModifierAttackSpeedBonus_Constant()
-	if self:GetCaster():IsRangedAttacker() then
-		return self:GetAbility():GetSpecialValueFor("maim_slow_attack_ranged")
+	if self:GetAbility() then
+		if self:GetCaster():IsRangedAttacker() then
+			self.attack = self:GetAbility():GetSpecialValueFor("maim_slow_attack_ranged")
+			return self:GetAbility():GetSpecialValueFor("maim_slow_attack_ranged")
+		else
+			self.attack = self:GetAbility():GetSpecialValueFor("maim_slow_attack")
+			return self:GetAbility():GetSpecialValueFor("maim_slow_attack")
+		end
 	else
-		return self:GetAbility():GetSpecialValueFor("maim_slow_attack")
-	end
+		return self.attack
+	end 
 end
 
 function modifier_maim:GetModifierMoveSpeedBonus_Percentage()
+	if self:GetAbility() then
 		if self:GetCaster():IsRangedAttacker() then
-		return self:GetAbility():GetSpecialValueFor("maim_slow_movement_ranged")
+			self.ms = self:GetAbility():GetSpecialValueFor("maim_slow_movement_ranged")
+			return self:GetAbility():GetSpecialValueFor("maim_slow_movement_ranged")
+		else
+			self.ms = self:GetAbility():GetSpecialValueFor("maim_slow_movement")
+			return self:GetAbility():GetSpecialValueFor("maim_slow_movement")
+		end
 	else
-		return self:GetAbility():GetSpecialValueFor("maim_slow_movement")
+		return self.ms
 	end
 end

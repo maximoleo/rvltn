@@ -18,7 +18,7 @@
 	{
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"refresher_core"
+		"AbilityTextureName"			"item_refresher_core"
 		"AbilitySharedCooldown"			"item_refresher"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"mana;mb;octarine core"
@@ -117,15 +117,6 @@
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%bonus_health_regen"
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%bonus_mana_regen"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
-				}
-			}
-			"modifier_octarine_unique_cooldown_reduction"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-
-				"Properties"
-				{
 					"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE"			"%bonus_cooldown_pct"
 				}
 			}

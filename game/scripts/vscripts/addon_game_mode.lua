@@ -40,7 +40,6 @@ function Precache( context )
   -- Abilities can also be precached in this way despite the name
   PrecacheItemByNameSync("item_bow", context)
   PrecacheItemByNameSync("item_bow_2", context)
-  PrecacheItemByNameSync("item_bottle_custom", context)
   PrecacheItemByNameSync("item_gang_gold", context)
   PrecacheItemByNameSync("item_recipe_sange_and_yasha_and_kaya", context)
   PrecacheItemByNameSync("item_sange_and_yasha_and_kaya", context)
@@ -58,7 +57,8 @@ function Precache( context )
   PrecacheItemByNameSync("item_refresher_core", context)
   PrecacheItemByNameSync("item_tranquil_gold", context)
   PrecacheItemByNameSync("item_pull_staff", context)
-  
+  PrecacheItemByNameSync("item_diffusal_upgrade", context)
+
 
   -- Entire heroes (sound effects/voice/models/particles) can be precached with PrecacheUnitByNameSync
   -- Custom units from npc_units_custom.txt can also have all of their abilities and precache{} blocks precached in this way

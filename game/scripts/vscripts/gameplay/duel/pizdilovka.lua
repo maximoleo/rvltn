@@ -246,7 +246,6 @@ function Safe_Information_Refresh_All(player)
 			player.InfBeforeDuel.Modifiers[i].caster = v:GetCaster()
 			player.InfBeforeDuel.Modifiers[i].ability = v:GetAbility()
 			player.InfBeforeDuel.Modifiers[i].name = v:GetName()
-			print(v:GetName())
 			player.InfBeforeDuel.Modifiers[i]["duration"] = v:GetDuration() - v:GetElapsedTime()
 			player:RemoveModifierByName(player.InfBeforeDuel.Modifiers[i].name)
 			i = i + 1
