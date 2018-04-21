@@ -15,10 +15,10 @@ function item_tranquil_gold:GetTexture()
 end
 
 modifier_item_tranquil_heal = class({
-    IsHidden = function() return 1 end,
-    IsDebuff = function() return 0 end,
-    IsPurgable = function() return 0 end,
-    RemoveOnDeath = function() return 0 end,})
+    IsHidden = function() return true end,
+    IsDebuff = function() return false end,
+    IsPurgable = function() return false end,
+    RemoveOnDeath = function() return false end,})
 
 function modifier_item_tranquil_heal:DeclareFunctions()
   return {

@@ -17,11 +17,12 @@
 
   "item_bow"
   	{	
-	    "BaseClass"           "item_datadriven"
+	    "BaseClass"           "item_lua"
 	    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "AbilityTextureName"  "custom/item_bow"
 	    "ItemQuality"         "legendary"
 	    "ItemDeclarations"    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+	   	"ScriptFile"          "items/item_bow.lua"
 
 	    // Special
 	    //-------------------------------------------------------------------------------------------------------------
@@ -47,43 +48,6 @@
 	        "var_type"        "FIELD_INTEGER"
 	        "bonus_damage"      "16"
 	      }
-	    }
-
-	    "OnProjectileHitUnit"
-	    {
-	      "DeleteOnHit" "1"
-	      "RunScript"
-	      {
-	        "ScriptFile"  "items/item_bow.lua"
-	        "Function"    "SplitShotDamage"
-	        "Damage_percent"  "%damage_percent"
-	      }
-	    }
-
-	    "Modifiers"
-	    {
-			"modifier_item_bow"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_all"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_all"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_all"
-				}
-				"OnAttack"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/item_bow.lua"
-						"Function"		"SplitShotLaunch"
-					}
-				}
-			}
 	    }
   	}
 

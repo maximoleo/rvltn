@@ -72,19 +72,19 @@ function Can_Spawn(i, j, k)
 end
 
 function Creep_Upgrade(i,j,nom)
-		local hptemp = 0
-		if not(PlaceOfSpawn[i].Creeps[nom]:IsNull()) then
-			hptemp = PlaceOfSpawn[i].Creeps[nom]:GetHealthPercent()
-			PlaceOfSpawn[i].Creeps[nom]:SetBaseMaxHealth(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][1][2])
-			PlaceOfSpawn[i].Creeps[nom]:SetMaxHealth(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][1][2])
-			PlaceOfSpawn[i].Creeps[nom]:SetHealth(PlaceOfSpawn[i].Creeps[nom]:GetMaxHealth() * hptemp / 100)
-			PlaceOfSpawn[i].Creeps[nom]:SetBaseDamageMin(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][2][2] - 2)
-			PlaceOfSpawn[i].Creeps[nom]:SetBaseDamageMax(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][2][2] + 2)
-			PlaceOfSpawn[i].Creeps[nom]:SetPhysicalArmorBaseValue(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][3][2])
-			PlaceOfSpawn[i].Creeps[nom]:SetDeathXP(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][4][2])
-			PlaceOfSpawn[i].Creeps[nom]:SetMaximumGoldBounty(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][5][2] + 2)
-			PlaceOfSpawn[i].Creeps[nom]:SetMinimumGoldBounty(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][5][2] + 2)
-		end
+	local hptemp = 0
+	if not(PlaceOfSpawn[i].Creeps[nom]:IsNull()) then
+		hptemp = PlaceOfSpawn[i].Creeps[nom]:GetHealthPercent()
+		PlaceOfSpawn[i].Creeps[nom]:SetBaseMaxHealth(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][1][2])
+		PlaceOfSpawn[i].Creeps[nom]:SetMaxHealth(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][1][2])
+		PlaceOfSpawn[i].Creeps[nom]:SetHealth(PlaceOfSpawn[i].Creeps[nom]:GetMaxHealth() * hptemp / 100)
+		PlaceOfSpawn[i].Creeps[nom]:SetBaseDamageMin(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][2][2] - 2)
+		PlaceOfSpawn[i].Creeps[nom]:SetBaseDamageMax(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][2][2] + 2)
+		PlaceOfSpawn[i].Creeps[nom]:SetPhysicalArmorBaseValue(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][3][2])
+		PlaceOfSpawn[i].Creeps[nom]:SetDeathXP(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][4][2])
+		PlaceOfSpawn[i].Creeps[nom]:SetMaximumGoldBounty(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][5][2] - 2)
+		PlaceOfSpawn[i].Creeps[nom]:SetMinimumGoldBounty(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][5][2] + 2)
+	end
 end
 
 function Reset_Stats(j,k,stat,min)

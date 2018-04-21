@@ -6,7 +6,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET|DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
 	    "Model"						"models/props_gameplay/banana_prop_closed"
-	    "BaseClass"                 "item_datadriven"
+	    "BaseClass"                 "item_lua"
 	    "ScriptFile"                "items/banana.lua"
 	    "AbilityTextureName"        "banana" 
 
@@ -35,13 +35,6 @@
 	     
 	    }
 	  
-	    "OnSpellStart"
-	    {
-	    	"RunScript"
-	    	{
-	    		"ScriptFile"  "items/banana.lua"
-        		"Function"    "AddBananaStats"
-	    	}
-	    }
+
     }
 }

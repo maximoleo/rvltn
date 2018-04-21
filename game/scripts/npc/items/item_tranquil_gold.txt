@@ -21,7 +21,7 @@
         "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
         "BaseClass"                 "item_lua"
         "ScriptFile"                "items/item_tranquil_gold.lua"
-        "AbilityTextureName"        "custom/tranquil_gold" 
+        "AbilityTextureName"        "custom/item_tranquil_gold_ready" 
         // Stats
         //------------------------------------------------------------------------------------------------
         "AbilityCooldown"                                     "13.0"

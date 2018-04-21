@@ -16,10 +16,11 @@
 	}
 	"item_refresher_core"
 	{
-		"BaseClass"						"item_datadriven"
+		"BaseClass"						"item_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"custom/item_refresher_core"
 		"AbilitySharedCooldown"			"item_refresher"
+	    "ScriptFile"                	"items/item_refresher_core.lua"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"mana;mb;octarine core"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
@@ -33,54 +34,49 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"35"
+				"bonus_intelligence"	"30"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_intelligence"	"30"
+				"bonus_health"			"550"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_health"			"550"
+				"bonus_mana"			"525"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_mana"			"525"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
 				"bonus_health_regen"	"30"
 			}
-			"06"
+			"05"
 			{
 				"var_type"				"FIELD_FLOAT"
 				"bonus_mana_regen"		"5"
 			}
-			"07"
+			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"cooldown_min"			"90"
 			}
-			"08"
+			"07"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"cooldown_max"			"150"
 			}
-			"09"
+			"08"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_cooldown_pct"	"25"
 			}
-			"10"
+			"09"
 			{
 				"var_type"				"FIELD_FLOAT"
 				"hero_lifesteal"		"30"
 			}
-			"11"
+			"10"
 			{
 				"var_type"				"FIELD_FLOAT"
 				"creep_lifesteal"		"10"

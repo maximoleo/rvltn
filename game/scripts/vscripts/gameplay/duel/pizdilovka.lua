@@ -232,6 +232,7 @@ function Safe_Information_Refresh_All(player)
 	do
 		if player:GetAbilityByIndex(i) then
 			player.InfBeforeDuel.AbilitiesCooldowns[i] = player:GetAbilityByIndex(i):GetCooldownTimeRemaining()
+			print(player.InfBeforeDuel.AbilitiesCooldowns[i])
 			player:GetAbilityByIndex(i):RefreshCharges()
 			player:GetAbilityByIndex(i):EndCooldown()
 		end

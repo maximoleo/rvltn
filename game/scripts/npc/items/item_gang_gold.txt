@@ -5,8 +5,8 @@
 	   // General
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "BaseClass"                 "item_datadriven"
-	    "ScriptFile"                "items/gang_gold.lua"
+	    "BaseClass"                 "item_lua"
+	    "ScriptFile"                "items/item_gang_gold.lua"
 	    "AbilityTextureName"        "custom/item_gang_gold" 
 
 	    // Item Info
@@ -46,7 +46,7 @@
 
 	    		"Passive"			"1"
 				"IsHidden"			"1"
-		       	"OnAttackLanded"
+		       	"OnDealDamage"
 		       	// "%attack_damage" is set to the damage value before mitigation
 		       	{
 		       		"RunScript"

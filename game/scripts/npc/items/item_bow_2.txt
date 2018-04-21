@@ -21,7 +21,7 @@
 
 	"item_bow_2"
 	{
-		"BaseClass"						"item_datadriven"
+		"BaseClass"						"item_lua"
 		"ScriptFile"					"items/item_bow"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"custom/item_bow_2"
@@ -99,53 +99,5 @@
 				"spell_amp"					"10"
 			}
 		}
-
-		"OnProjectileHitUnit"
-	    {
-	      "DeleteOnHit" "1"
-	      "RunScript"
-	      {
-	        "ScriptFile"  "items/item_bow.lua"
-	        "Function"    "SplitShotDamage"
-	        "Damage_percent"  "%damage_percent"
-	      }
-	    }
-
-	    "Modifiers"
-	    {
-			"modifier_item_bow2"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_all"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_all"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_all"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%bonus_movement_speed"
-					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"    "%spell_amp"
-					"MODIFIER_PROPERTY_MANACOST_PERCENTAGE"         "%manacost_reduction"
-				}
-				"OnAttack"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/item_bow.lua"
-						"Function"		"SplitShotLaunch"
-					}
-				}
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/item_sange_and_yasha_and_kaya.lua"
-						"Function"		"maim_attack"
-					}
-				}
-			}
-	    }	
 	}
 }

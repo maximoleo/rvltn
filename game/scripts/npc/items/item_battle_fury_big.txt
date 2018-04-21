@@ -19,11 +19,13 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"4007"
-	    "BaseClass"                     "item_datadriven"
+	    "BaseClass"                     "item_lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_CUSTOM"
 		"AbilityTextureName"            "custom/item_battle_fury_big"
+	    "ScriptFile"               		"items/item_battle_fury_big.lua"
+
 
 		"AbilityCastRange"				"350"
 		"AbilityCastPoint"				"0.0"
@@ -162,36 +164,6 @@
 			}
 		}
 		
-		"Modifiers"
-		{
-			"modifier_bf"
-			{
-	    		"Passive"			"1"
-				"IsHidden"			"1"
-				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_all"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_all"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_all"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%bonus_movement_speed"
-					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"    "%spell_amp"
-					"MODIFIER_PROPERTY_MANACOST_PERCENTAGE"         "%manacost_reduction"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
-				}
-
-	    		"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/item_battle_fury_big.lua"
-						"Function"		"attack"
-					}
-				}
-	    	}
-		}
 	}
 
 }

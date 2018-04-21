@@ -10,7 +10,7 @@ end
 
 
 function item_arcane_gold:OnSpellStart()
-	if caster:IsIllusion() or caster:IsTempestDouble() or caster:IsClone() then
+	if self:GetCaster():IsIllusion() or self:GetCaster():IsTempestDouble() or self:GetCaster():IsClone() then
       return
     end
 
@@ -28,10 +28,10 @@ end
 
 
 modifier_item_arcane_gold = class({
-	  IsHidden = function() return 1 end,
-	  IsDebuff = function() return 0 end,
-	  IsPurgable = function() return 0 end,
-	  RemoveOnDeath = function() return 0 end,
+	  IsHidden = function() return true end,
+	  IsDebuff = function() return false end,
+	  IsPurgable = function() return false end,
+	  RemoveOnDeath = function() return false end,
 })
 
 

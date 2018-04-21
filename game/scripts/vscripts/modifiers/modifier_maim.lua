@@ -22,7 +22,7 @@ end
 
 function modifier_maim:GetModifierAttackSpeedBonus_Constant()
 	if self:GetAbility() then
-		if self:GetCaster():IsRangedAttacker() then
+		if self:GetCaster() and self:GetCaster():IsRangedAttacker() then
 			self.attack = self:GetAbility():GetSpecialValueFor("maim_slow_attack_ranged")
 			return self:GetAbility():GetSpecialValueFor("maim_slow_attack_ranged")
 		else
@@ -36,7 +36,7 @@ end
 
 function modifier_maim:GetModifierMoveSpeedBonus_Percentage()
 	if self:GetAbility() then
-		if self:GetCaster():IsRangedAttacker() then
+		if self:GetCaster() and self:GetCaster():IsRangedAttacker() then
 			self.ms = self:GetAbility():GetSpecialValueFor("maim_slow_movement_ranged")
 			return self:GetAbility():GetSpecialValueFor("maim_slow_movement_ranged")
 		else

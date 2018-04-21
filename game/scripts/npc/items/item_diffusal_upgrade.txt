@@ -24,8 +24,9 @@
     }
     "item_diffusal_upgrade"
     {
-        "BaseClass"                                           "item_datadriven"
+        "BaseClass"                                           "item_lua"
         "AbilityTextureName"                                  "custom/item_diffusal_upgrade"
+        "ScriptFile"                                          "items/item_diffusal_2.lua"
 
         "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
         "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH | DOTA_UNIT_TARGET_TEAM_CUSTOM"
@@ -119,39 +120,6 @@
                 "slow_pct"              "20"
             }
         }
-        "OnSpellStart"
-        {
-            "RunScript"
-            {
-                "ScriptFile"    "items/item_diffusal_2"
-                "Function"        "purge"
-            }
-        }
-        "Modifiers"
-        {
-            "modifier_item_diffusal_2"
-            {
-                "Passive"            "1"
-                "IsHidden"            "1"
-                "IsDebuff"            "0"
-                
-                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
 
-                "Properties"
-                {
-                    "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%bonus_agility"
-                    "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_intellect"
-                }
-
-                "OnAttackLanded"
-                {
-                    "RunScript"
-                    {
-                        "ScriptFile"    "items/item_diffusal_2"
-                        "Function"      "manaburn"
-                    }
-                }
-            }
-        }
     }
 }
