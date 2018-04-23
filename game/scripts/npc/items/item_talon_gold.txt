@@ -1,0 +1,85 @@
+"DOTAItems"
+{
+	"item_recipe_talon_gold"
+    {
+    	"BaseClass"           "item_datadriven"
+	    "Model"               "models/props_gameplay/recipe.mdl"
+	    "AbilityTextureName"  "item_recipe"
+	    "ItemCost"            "0"
+	    "ItemShopTags"        ""
+	    "ItemRecipe"          "1"
+	    "ItemResult"          "item_talon_gold"
+	    "ItemRequirements"
+	    {
+	    	"01" 			"item_iron_talon;item_gang_gold"
+	    }
+  	}
+    "item_talon_gold"
+  	{
+	   // General
+	    //-----------------------------------------------------------------------------------------
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+   		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CREEP"
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+
+	    "BaseClass"                 "item_lua"
+	    "ScriptFile"                "items/item_talon_gold.lua"
+	    "AbilityTextureName"        "custom/item_talon_gold" 
+
+	    // Item Info
+	    //-----------------------------------------------------------------------------------------
+	    "ItemStackable"         "0"
+        "AbilityCooldown"       "30"
+         // Special  
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	        	"var_type"                 "FIELD_INTEGER"
+	       		"inc_gold_for_creep"       "200"
+	      	}
+	      	"02"
+	      	{
+	      		"var_type"                 "FIELD_INTEGER"
+	      		"armor"                    "150"
+	      	} 
+		  	"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"quelling_bonus"		   "150"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"quelling_bonus_ranged"	   "125"
+			}
+			"05"
+	        {
+	        	"var_type"        "FIELD_INTEGER"
+	       		"inc_exp_for_creep"    	    "200"
+	      	}
+	      	"06"
+	      	{
+	        	"var_type"        "FIELD_INTEGER"
+	       		"inc_damage_for_creep"    	"200"
+	      	}
+	      	"07"
+	      	{
+	        	"var_type"        "FIELD_INTEGER"
+	       		"inc_HP_for_creep"    	    "200"
+	      	}
+	      	"08"
+	      	{
+	        	"var_type"        "FIELD_INTEGER"
+	       		"inc_armor_for_creep"    	"200"
+	      	}
+	      	"09"
+	      	{
+	        	"var_type"        "FIELD_INTEGER"
+	       		"inc_movespeed_for_creep"  	"200"
+	      	}	
+	    }
+	  
+    }
+}

@@ -73,11 +73,11 @@ end
 
 function Creep_Upgrade(i,j,nom)
 	local hptemp = 0
-	if not(PlaceOfSpawn[i].Creeps[nom]:IsNull()) then
+	if not(PlaceOfSpawn[i].Creeps[nom]:IsNull()) and not PlaceOfSpawn[i].Creeps[nom]:FindModifierByName("modifier_talon_creep_buff") then
 		hptemp = PlaceOfSpawn[i].Creeps[nom]:GetHealthPercent()
 		PlaceOfSpawn[i].Creeps[nom]:SetBaseMaxHealth(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][1][2])
 		PlaceOfSpawn[i].Creeps[nom]:SetMaxHealth(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][1][2])
-		PlaceOfSpawn[i].Creeps[nom]:SetHealth(PlaceOfSpawn[i].Creeps[nom]:GetMaxHealth() * hptemp / 100)
+		PlaceOfSpawn[i].Creeps[nom]:SetHealth(math.max(1,PlaceOfSpawn[i].Creeps[nom]:GetMaxHealth() * hptemp / 100))
 		PlaceOfSpawn[i].Creeps[nom]:SetBaseDamageMin(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][2][2] - 2)
 		PlaceOfSpawn[i].Creeps[nom]:SetBaseDamageMax(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][2][2] + 2)
 		PlaceOfSpawn[i].Creeps[nom]:SetPhysicalArmorBaseValue(CreepLevel[j][PlaceOfSpawn[i].Creeps[nom].k][2][3][2])

@@ -1,0 +1,75 @@
+"DOTAItems"
+{
+    "item_recipe_shirigan"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"                                           "item_datadriven"
+        "Model"                                               "models/props_gameplay/recipe.mdl"
+        "AbilityTextureName"                                  "item_recipe"
+
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"                                            "1500"
+        "ItemShopTags"                                        ""
+
+        // Recipe
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemRecipe"                                          "1"
+        "ItemResult"                                          "item_shirigan"
+        "ItemRequirements"
+        {
+           "01"                                                "item_kaya;item_aether_lens"
+        }
+    }
+    "item_shirigan"
+  	{
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	    "BaseClass"                 "item_lua"
+	    "ScriptFile"                "items/item_shirigan.lua"
+	    "AbilityTextureName"        "custom/item_shirigan_inactive" 
+
+	    // Item Info
+	    //-------------------------------------------------------------------------------------------------------------
+	    "ItemCost"              "300"
+	    "ItemShopTags"          "item_item_shirigan"
+	    "ItemStackable"         "0"
+
+        "AbilitySpecial"
+        {
+        	"01"
+        	{
+        		"var_type"			"FIELD_INTEGER"
+        		"bonus_int"			"25"
+        	}
+        	"02"
+        	{
+        		"var_type"			"FIELD_FLOAT"
+        		"spell_amp"			"20"
+        	}
+           	"03"
+        	{
+        		"var_type"			"FIELD_FLOAT"
+        		"manacost"	         "30"
+        	}
+           	"04"
+        	{
+        		"var_type"			"FIELD_FLOAT"
+        		"bonus_mana_regen" 	"6"
+        	}
+           	"05"
+        	{
+        		"var_type"			"FIELD_FLOAT"
+        		"cast_range"	    "400"
+        	}
+           	"06"
+        	{
+        		"var_type"			"FIELD_FLOAT"
+        		"mana_degen"	   	"-58"
+        	}
+        }
+        
+    }
+}

@@ -29,8 +29,13 @@ function modifier_bf:OnAttackLanded(keys)
 	local damage = keys.damage
 	if keys.attacker == self:GetParent() then
 		if keys.target:IsCreep() then
-			ApplyDamage({victim = keys.target, attacker = keys.attacker, damage = keys.damage * (self:GetAbility():GetSpecialValueFor("quelling_bonus") - 100)/100, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility()})
-			damage =  keys.damage * self:GetAbility():GetSpecialValueFor("quelling_bonus")/100
+			if keys.attacker:IsRangedAttacker() then
+				ApplyDamage({victim = keys.target, attacker = keys.attacker, damage = keys.damage * (self:GetAbility():GetSpecialValueFor("quelling_bonus_ranged") - 100)/100, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility()})
+				damage =  keys.damage * self:GetAbility():GetSpecialValueFor("quelling_bonus_ranged")/100
+			else
+				ApplyDamage({victim = keys.target, attacker = keys.attacker, damage = keys.damage * (self:GetAbility():GetSpecialValueFor("quelling_bonus") - 100)/100, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility()})
+				damage =  keys.damage * self:GetAbility():GetSpecialValueFor("quelling_bonus")/100
+			end
 		end
 		
 		if not keys.attacker:IsRangedAttacker() then	
