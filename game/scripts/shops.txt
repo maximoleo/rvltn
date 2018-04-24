@@ -86,7 +86,8 @@
     "item"    "item_pers"
     "item"    "item_hand_of_midas"
     "item"    "item_travel_boots"   
-    "item"    "item_moon_shard"       
+    "item"    "item_moon_shard"
+    "item"    "item_pull_staff"       
   }
 
   // Level 2 - Blue Recipes
