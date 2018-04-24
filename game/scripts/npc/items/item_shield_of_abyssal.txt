@@ -1,0 +1,111 @@
+"DOTAItems"
+{
+	"item_recipe_shield_of_abyssal"
+    {
+    	"BaseClass"           "item_datadriven"
+	    "Model"               "models/props_gameplay/recipe.mdl"
+	    "AbilityTextureName"  "item_recipe"
+	    "ItemCost"            "0"
+	    "ItemShopTags"        ""
+	    "ItemRecipe"          "1"
+	    "ItemResult"          "item_shield_of_abyssal"
+	    "ItemRequirements"
+	    {
+	    	"01" 			"item_crimson_guard;item_abyssal_blade"
+	    }
+  	}
+    "item_shield_of_abyssal"
+  	{
+	   // General
+	    //-----------------------------------------------------------------------------------------
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET|DOTA_ABILITY_BEHAVIOR_AOE"
+	    "BaseClass"                 "item_lua"
+	    "ScriptFile"                "items/item_shield_of_abyssal.lua"
+	    "AbilityTextureName"        "custom/item_shield_of_abyssal" 
+
+	    // Item Info
+	    //-----------------------------------------------------------------------------------------
+	    "ItemStackable"         "0"
+        "AbilityCooldown"       "30"
+        // Special  
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	      "01"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "crimson_duration"    		  "100"
+	      }
+	      "02"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "crimson_radius"            "600"
+	      } 
+	      "03"    
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"shield_cooldown"		"20"
+	      }
+	      "04"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"bonus_health"		"1000"	
+	      }
+	      "05"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"bonus_health_regen"		"1000"
+	      }
+	      "06"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"bonus_strength"		"16"	
+	      }
+	      "07"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"bonus_all"			"2"
+	      }
+	      "08"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"bonus_armor"		"5"
+	      }
+	      "09"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"block_chance"		"50"
+	      }
+	      "10"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"melee_block"		"70"
+	      }
+	      "11"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"ranger_block"		"35"
+	      }
+	      "12"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"crimson_bonus_armor"		"35"
+	      }
+	      "13"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"crimson_block_chance"		"100"
+	      }
+	      "14"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"crimson_block"		"60"
+	      }
+	       "15"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"crimson_cooldown"		"46"
+	      }
+	    }
+    }
+}

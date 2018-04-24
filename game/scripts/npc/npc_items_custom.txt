@@ -17,8 +17,7 @@
 #base "items/item_diffusal_upgrade.txt"
 #base "items/item_talon_gold.txt"
 #base "items/item_shirigan.txt"
-
-
+#base "items/item_shield_of_abyssal.txt"
 
 "DOTAItems"
 {
