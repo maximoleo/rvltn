@@ -8,21 +8,51 @@ function item_arcane_gold:GetIntrinsicModifierName()
     return "modifier_item_arcane_gold"
 end
 
-
 function item_arcane_gold:OnSpellStart()
-	if self:GetCaster():IsIllusion() or self:GetCaster():IsTempestDouble() or self:GetCaster():IsClone() then
-      return
+  local caster = self:GetCaster()
+
+  -- Prevent Meepo Clones from activating Greater Arcane Boots
+  if caster:IsIllusion() or caster:IsTempestDouble() or caster:IsClone() then
+    return false
+  end
+
+  local heroes = FindUnitsInRadius(
+    caster:GetTeamNumber(),
+    caster:GetAbsOrigin(),
+    nil,
+    self:GetSpecialValueFor("radius"),
+    DOTA_UNIT_TARGET_TEAM_FRIENDLY,
+    DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO,
+    DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_MANA_ONLY,
+    FIND_ANY_ORDER,
+    false
+  )
+
+  local function ReplenishMana(hero)
+    local manaReplenishAmount = self:GetSpecialValueFor("mana")
+    hero:GiveMana(manaReplenishAmount)
+
+    local particleManaGainName = "particles/items_fx/arcane_boots_recipient.vpcf"
+
+    SendOverheadEventMessage(caster:GetPlayerOwner(), OVERHEAD_ALERT_MANA_ADD, hero, manaReplenishAmount, caster:GetPlayerOwner())
+
+    if hero ~= caster then
+      SendOverheadEventMessage(hero:GetPlayerOwner(), OVERHEAD_ALERT_MANA_ADD, hero, manaReplenishAmount, caster:GetPlayerOwner())
     end
 
-    for _,v in pairs(FindUnitsInRadius(self:GetCaster():GetTeamNumber(), self:GetCaster():GetAbsOrigin(), nil, self:GetSpecialValueFor("radius"), 1, 19, 32832, 0, false)) do
-		    v:GiveMana(self:GetSpecialValueFor("mana"))
-		        local particleManaGain = ParticleManager:CreateParticle(particleManaGainName, PATTACH_ABSORIGIN_FOLLOW, v)
-   				 ParticleManager:SetParticleControl(particleManaGain, 1, v:GetOrigin())
-   				 ParticleManager:SetParticleControl(particleManaGain, 2, v:GetOrigin())
-   				 ParticleManager:ReleaseParticleIndex(particleManaGain)
-	  end
-	  self:GetCaster():GiveMana(self:GetSpecialValueFor("mana"))
-    self:GetCaster():EmitSound("DOTA_Item.ArcaneBoots.Activate")
+    local particleManaGain = ParticleManager:CreateParticle(particleManaGainName, PATTACH_ABSORIGIN_FOLLOW, hero)
+    ParticleManager:SetParticleControl(particleManaGain, 1, hero:GetOrigin())
+    ParticleManager:SetParticleControl(particleManaGain, 2, hero:GetOrigin())
+    ParticleManager:ReleaseParticleIndex(particleManaGain)
+  end
+
+  for _,v in pairs(heroes) do
+  local particleArcaneActivateName = "particles/items_fx/arcane_boots.vpcf"
+  local particleArcaneActivate = ParticleManager:CreateParticle(particleArcaneActivateName, PATTACH_ABSORIGIN_FOLLOW, caster)
+  ParticleManager:ReleaseParticleIndex(particleArcaneActivate)
+
+  caster:EmitSound("DOTA_Item.ArcaneBoots.Activate")
+  end
 end
 
 

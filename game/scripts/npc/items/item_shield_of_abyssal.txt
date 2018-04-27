@@ -106,6 +106,12 @@
 	      	"var_type"        "FIELD_INTEGER"
 	      	"crimson_cooldown"		"46"
 	      }
+	       "15"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"shield_stun"		"2"
+	      }
+				    
 	    }
     }
 }

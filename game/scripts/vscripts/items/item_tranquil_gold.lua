@@ -6,13 +6,7 @@ function item_tranquil_gold:GetIntrinsicModifierName()
     return "modifier_item_tranquil_heal"
 end
 
-function item_tranquil_gold:GetTexture()
-    if self.mod:IsCooldownReady() then
-      return "custom/item_tranquil_gold_ready"
-    else
-        return "custom/item_tranquil_gold_inactive"
-    end
-end
+
 
 modifier_item_tranquil_heal = class({
     IsHidden = function() return true end,

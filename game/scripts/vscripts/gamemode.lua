@@ -18,6 +18,7 @@ require('libraries/playerresource')
 require('libraries/containers')
 require('libraries/modmaker')
 require('libraries/pathgraph')
+require('libraries/functional')
 
 require('libraries/selection')
 
