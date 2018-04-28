@@ -18,6 +18,8 @@
 #base "items/item_talon_gold.txt"
 #base "items/item_shirigan.txt"
 #base "items/item_shield_of_abyssal.txt"
+#base "items/item_veil_of_chaos_storm.txt"
+#base "items/item_meca_2.txt"
 
 "DOTAItems"
 {

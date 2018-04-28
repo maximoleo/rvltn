@@ -2,45 +2,63 @@
 // Dota Abilities Override File
 "DOTAAbilities"
 {
-  "Version"   "1"
-  "arena_rune"
-  {
-    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-    "BaseClass"         "ability_datadriven"
-    "MaxLevel"          "1"
-
-    "OnCreated"
+    "cold_area"
     {
-      "RunScript"
-      {
-        "ScriptFile"  "gameplay/runes/rune.lua"
-        "Function"    "SetMaxLevel"
-      }
-    }
 
-    "Modifiers"
+        "ID"                                                  "9900"
+        "BaseClass"                                           "ability_lua"
+        "ScriptFile"                                          "abilities/cold_area.lua"
+        "AbilityTextureName"                                  "tidehunter_kraken_shell"
+        "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT"
+
+
+        "MaxLevel"                                            "1"
+        "RequiredLevel"                                       "1"
+        "LevelsBetweenUpgrades"                               "1"
+        "AbilityCooldown"                                     "40"        
+        "AbilityManaCost"                                     "180"
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                                        "FIELD_INTEGER"
+                "percent_damage_reduce"                           "85"
+            }
+            "02"
+            {
+                "var_type"                                        "FIELD_FLOAT"
+                "reveal_duration"                                 "5.0"
+            }
+            "03"
+            {
+                "var_type"                                        "FIELD_INTEGER"
+                "radius"                                          "450"
+            }
+        }
+    }
+    "boss_grow"
     {
-      "modifier_arena_custom_rune"
-      {
-        "Passive"       "1"
-        "IsHidden"        "1"
-        "States"
-        {
-          "MODIFIER_STATE_NO_HEALTH_BAR"    "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_MAGIC_IMMUNE"   "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED"
-        }
 
-        "Properties"
+        "ID"                                                  "9901"
+        "BaseClass"                                           "ability_lua"
+        "ScriptFile"                                          "abilities/boss_grow.lua"
+        "AbilityTextureName"                                  "tidehunter_kraken_shell"
+        "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+
+        "MaxLevel"                                            "1"
+        "RequiredLevel"                                       "1"
+        "LevelsBetweenUpgrades"                               "1"
+
+        "AbilitySpecial"
         {
-          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL" "1"
-          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
-          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE" "1"
-          "MODIFIER_PROPERTY_MIN_HEALTH" "1"
+            "01"
+            {
+                "var_type"                                        "FIELD_INTEGER"
+                "hp_to_dmg_and_height"                           "85"
+            }
         }
-      }
     }
-  }
 }
 

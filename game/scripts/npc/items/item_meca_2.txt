@@ -1,0 +1,64 @@
+
+"DOTAItems"
+{
+	"item_recipe_meca_2"
+    {
+    	"BaseClass"           "item_datadriven"
+	    "Model"               "models/props_gameplay/recipe.mdl"
+	    "AbilityTextureName"  "item_recipe"
+	    "ItemCost"            "2000"
+	    "ItemShopTags"        ""
+	    "ItemRecipe"          "1"
+	    "ItemResult"          "item_meca_2"
+	    "ItemRequirements"
+	    {
+	    	"01" 			"item_mekansm;item_spirit_vessel"
+	    }
+  	}
+    "item_meca_2"
+  	{
+	   // General
+	    //-----------------------------------------------------------------------------------------
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET|DOTA_ABILITY_BEHAVIOR_AOE"
+	    "BaseClass"                 "item_lua"
+	    "ScriptFile"                "items/item_meca_2.lua"
+	    "AbilityTextureName"        "custom/item_meca_2" 
+
+	    // Item Info
+	    //-----------------------------------------------------------------------------------------
+	    "ItemStackable"         "0"
+        "AbilityCooldown"       "30"
+         // Special  
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	      "01"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "health"          "20"
+	      }
+	      "02"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "mana"            "30"
+	      } 
+	      "03"    
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"radius"		  "1000"
+	      }
+	      "04"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"bonus_all"		  "1000"	
+	      }
+	      "05"
+	      {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"armor"		  "1000"
+	      }
+	      
+	    }
+	  
+    }
+}

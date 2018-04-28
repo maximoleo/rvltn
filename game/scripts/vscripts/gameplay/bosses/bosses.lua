@@ -1,17 +1,17 @@
 BossSpawners = {}
-AmountOfBosses = 0
+AmountOfBosses = 1
 
 BossNames = 
 {
-	"small_boss",
-	"small_boss",
-	"small_boss",
-	"small_boss",
-	"small_boss",
-	"small_boss",
-	"small_boss",
-	"small_boss",
-	"small_boss",
+	"earth_boss",
+	"earth_boss",
+	"earth_boss",
+	"earth_boss",
+	"earth_boss",
+	"earth_boss",
+	"earth_boss",
+	"earth_boss",
+	"earth_boss",
 }
 
 
@@ -21,11 +21,12 @@ function Bosses()
 end
 
 function FindBossSpawners()
-	for i = 1 to AmountOfBosses do
+	for i = 1, AmountOfBosses do
 		if i < 10 then
-			BossSpawners[i] = FindAllByName("boss_spawner_0"..i)
+			BossSpawners[i] = Entities:FindAllByName("boss_spawner_0"..i)[1]
+			BossSpawners[i].name = i
 		else
-			BossSpawners[i] = FindAllByName("boss_spawner_"..i)
+			BossSpawners[i] = Entities:FindAllByName("boss_spawner_"..i)
 		end
 	end
 end
@@ -37,17 +38,16 @@ function SpawnBosses()
 end
 
 function BossType(spawner)
-	local num = (spawner:GetName()[14]*10 + spawner:GetName()[14]*1)
-	print(num)
-	if num < 5 then
+	
+	if spawner.name < 5 then
 		return BossNames[math.random(1, 3)]
-	elseif num < 7 then
+	elseif spawner.name < 7 then
 		return BossNames[math.random(4, 6)]
-	elseif num == 7 then
+	elseif spawner.name == 7 then
 		return BossNames[7]
-	elseif num == 8 then
+	elseif spawner.name == 8 then
 		return BossNames[8]
-	elseif num == 9 then
+	elseif spawner.name == 9 then
 		return BossNames[9]
 	end	
 end
